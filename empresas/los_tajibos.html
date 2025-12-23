@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico Fase 1: Los Tajibos | Grupo Doria Medina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap@2.3.0/dist/chartjs-chart-treemap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --brand: #1e3a5f;
+            --accent: #c9a227;
+            --danger: #dc2626;
+            --warning: #f59e0b;
+            --success: #10b981;
+            --ink: #0a0a0a;
+            --muted: #6b7280;
+        }
+        body { font-family: 'Inter', system-ui, sans-serif; color: var(--ink); }
+        .accent-bar { background: linear-gradient(135deg, var(--brand), var(--accent)); height: 4px; }
+        .kpi { border-left: 4px solid var(--brand); background: #f8fafc; }
+        .kpi-danger { border-left-color: var(--danger); }
+        .kpi-warning { border-left-color: var(--warning); }
+        .kpi-success { border-left-color: var(--success); }
+        .heat-critical { background-color: #fecaca; color: #991b1b; }
+        .heat-high { background-color: #fed7aa; color: #9a3412; }
+        .heat-medium { background-color: #fef08a; color: #854d0e; }
+        .heat-low { background-color: #bbf7d0; color: #166534; }
+        .matrix-cell { transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; }
+        .matrix-cell:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .nav-link { color: var(--brand); text-decoration: none; border-bottom: 2px solid transparent; }
+        .nav-link:hover { border-bottom-color: var(--accent); }
+        .section-title { color: var(--brand); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 0.5rem; }
+        @media print {
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; }
+            body { font-size: 11pt; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm no-print">
+        <div class="accent-bar"></div>
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div>
+                <a href="../ejecutivo.html" class="nav-link text-sm">← Volver al Informe Ejecutivo</a>
+            </div>
+            <nav class="flex gap-6">
+                <a href="los_tajibos.html" class="nav-link">🏨 Los Tajibos</a>
+                <a href="bolivian_foods.html" class="nav-link">🍔 Bolivian Foods</a>
+                <a href="comversa.html" class="nav-link">🏗️ Comversa</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Portada -->
+        <section id="portada" class="mb-12">
+            <div class="text-center mb-8">
+                <span class="text-6xl">🏨</span>
+                <h1 class="text-4xl font-bold mt-4" style="color: var(--brand);">DIAGNÓSTICO FASE 1</h1>
+                <h2 class="text-3xl font-semibold text-gray-700 mt-2">Los Tajibos</h2>
+                <p class="text-lg text-gray-500 mt-2">Hotelería y Hospitalidad</p>
+            </div>
+
+            <!-- KPIs Grid - Updated from SQLite Dec 2025 -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+                <div class="kpi p-4 rounded-lg">
+                    <div class="text-3xl font-bold" style="color: var(--brand);">35</div>
+                    <div class="text-sm text-gray-600">Entrevistas</div>
+                </div>
+                <div class="kpi p-4 rounded-lg">
+                    <div class="text-3xl font-bold" style="color: var(--brand);">124</div>
+                    <div class="text-sm text-gray-600">Procesos</div>
+                </div>
+                <div class="kpi kpi-danger p-4 rounded-lg">
+                    <div class="text-3xl font-bold" style="color: var(--danger);">57</div>
+                    <div class="text-sm text-gray-600">Pain Points</div>
+                </div>
+                <div class="kpi p-4 rounded-lg">
+                    <div class="text-3xl font-bold" style="color: var(--brand);">85</div>
+                    <div class="text-sm text-gray-600">Sistemas</div>
+                </div>
+            </div>
+
+            <!-- Additional Metrics Row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                <div class="kpi kpi-warning p-4 rounded-lg">
+                    <div class="text-3xl font-bold" style="color: var(--warning);">78</div>
+                    <div class="text-sm text-gray-600">Ineficiencias</div>
+                </div>
+                <div class="kpi p-4 rounded-lg">
+                    <div class="text-3xl font-bold" style="color: var(--brand);">69</div>
+                    <div class="text-sm text-gray-600">KPIs</div>
+                </div>
+                <div class="kpi kpi-success p-4 rounded-lg">
+                    <div class="text-3xl font-bold" style="color: var(--success);">119</div>
+                    <div class="text-sm text-gray-600">Candidatos Automatización</div>
+                </div>
+                <div class="kpi p-4 rounded-lg">
+                    <div class="text-3xl font-bold" style="color: var(--brand);">1,118</div>
+                    <div class="text-sm text-gray-600">Datos Consolidados</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Executive Summary from Phase 1 Diagnostic -->
+        <section id="resumen-ejecutivo" class="mb-12 page-break">
+            <h3 class="section-title text-2xl font-bold mb-6">Resumen Ejecutivo Fase 1</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-gradient-to-br from-blue-900 to-blue-700 text-white rounded-lg p-6">
+                    <div class="text-sm uppercase tracking-wide opacity-80">Madurez Digital</div>
+                    <div class="text-5xl font-bold mt-2">4<span class="text-2xl">/10</span></div>
+                    <div class="text-sm mt-2 opacity-80">Promedio general del hotel</div>
+                </div>
+                <div class="bg-gradient-to-br from-emerald-600 to-emerald-500 text-white rounded-lg p-6">
+                    <div class="text-sm uppercase tracking-wide opacity-80">Oportunidades Identificadas</div>
+                    <div class="text-3xl font-bold mt-2">119</div>
+                    <div class="text-sm mt-2 opacity-80">Candidatos de automatización</div>
+                </div>
+                <div class="bg-gradient-to-br from-amber-500 to-amber-400 text-white rounded-lg p-6">
+                    <div class="text-sm uppercase tracking-wide opacity-80">Discovery</div>
+                    <div class="text-3xl font-bold mt-2">~52 hrs</div>
+                    <div class="text-sm mt-2 opacity-80">35 stakeholders entrevistados</div>
+                </div>
+            </div>
+
+            <!-- Principal Hallazgos -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h4 class="font-bold text-lg mb-4" style="color: var(--brand);">📋 Principales Hallazgos</h4>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="p-4 bg-red-50 border-l-4 border-red-500 rounded-r">
+                        <div class="font-semibold text-red-800">1. Fragmentación de Sistemas</div>
+                        <p class="text-sm text-gray-700 mt-1">85 sistemas identificados sin integración centralizada. Opera, Micros, Simphony, SAP operan en silos.</p>
+                    </div>
+                    <div class="p-4 bg-orange-50 border-l-4 border-orange-500 rounded-r">
+                        <div class="font-semibold text-orange-800">2. Mantenimiento Manual</div>
+                        <p class="text-sm text-gray-700 mt-1">Ingeniería opera con Excel y WhatsApp. MaintainX en proceso de implementación pero sin adopción completa.</p>
+                    </div>
+                    <div class="p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-r">
+                        <div class="font-semibold text-yellow-800">3. Ausencia de CRM</div>
+                        <p class="text-sm text-gray-700 mt-1">No existe sistema de gestión de relaciones con clientes, dificultando seguimiento de cotizaciones.</p>
+                    </div>
+                </div>
+                <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                    <div class="font-semibold text-blue-800">💡 Recomendación Estratégica</div>
+                    <p class="text-sm text-gray-700 mt-1">Priorizar implementación de CRM integrado con sistemas de ventas, completar adopción de MaintainX para mantenimiento, y establecer capa de integración de datos para unificar Opera/Micros/Simphony con SAP.</p>
+                </div>
+            </div>
+
+            <!-- Sistemas Identificados (Nicolas feedback: list by name) -->
+            <div class="bg-white rounded-lg shadow p-6 mt-6">
+                <h4 class="font-bold text-lg mb-4" style="color: var(--brand);">💻 Sistemas Identificados (85 total)</h4>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="p-3 bg-gray-50 rounded">
+                        <div class="text-xs text-gray-500 uppercase mb-2">Operativos Core</div>
+                        <ul class="text-sm space-y-1">
+                            <li>• Opera PMS (Recepción)</li>
+                            <li>• Micros/Simphony (POS)</li>
+                            <li>• SAP Business One (ERP)</li>
+                            <li>• Satcom (Facturación)</li>
+                            <li>• MaintainX (Mantenimiento)</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 bg-gray-50 rounded">
+                        <div class="text-xs text-gray-500 uppercase mb-2">Comunicación</div>
+                        <ul class="text-sm space-y-1">
+                            <li>• Correo Electrónico</li>
+                            <li>• WhatsApp Business</li>
+                            <li>• Cisco WLC (Red)</li>
+                            <li>• Control Panel</li>
+                            <li>• Docker (DevOps)</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 bg-gray-50 rounded">
+                        <div class="text-xs text-gray-500 uppercase mb-2">Productividad</div>
+                        <ul class="text-sm space-y-1">
+                            <li>• AutoCAD (Ingeniería)</li>
+                            <li>• Canva/CapCut (Marketing)</li>
+                            <li>• ChatGPT (Asistencia)</li>
+                            <li>• Angular (Desarrollo)</li>
+                            <li>• Empowered GXP (Huésped)</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mt-4">Fuente: SQLite consolidated_entities | entity_type='system' | company='Los Tajibos'</p>
+            </div>
+        </section>
+
+        <!-- NEW: Macroprocesos Table from Phase 1 -->
+        <section id="macroprocesos" class="mb-12">
+            <h3 class="section-title text-2xl font-bold mb-6">Macroprocesos Identificados</h3>
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table class="w-full text-sm">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-3 text-left">#</th>
+                            <th class="px-4 py-3 text-left">Macroproceso</th>
+                            <th class="px-4 py-3 text-center">Madurez</th>
+                            <th class="px-4 py-3 text-center">Oportunidad</th>
+                            <th class="px-4 py-3 text-center">Prioridad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b"><td class="px-4 py-3">1</td><td class="px-4 py-3">Operaciones de Recepción (Check-in/Check-out)</td><td class="px-4 py-3 text-center"><span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-bold">5/10</span></td><td class="px-4 py-3 text-center">Alta</td><td class="px-4 py-3 text-center"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Quick Win</span></td></tr>
+                        <tr class="border-b bg-red-50"><td class="px-4 py-3">2</td><td class="px-4 py-3 font-semibold">Gestión de Alimentos y Bebidas</td><td class="px-4 py-3 text-center"><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-bold">4/10</span></td><td class="px-4 py-3 text-center font-bold">Alta</td><td class="px-4 py-3 text-center"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Estratégico</span></td></tr>
+                        <tr class="border-b bg-red-50"><td class="px-4 py-3">3</td><td class="px-4 py-3 font-semibold">Mantenimiento e Ingeniería</td><td class="px-4 py-3 text-center"><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-bold">3/10</span></td><td class="px-4 py-3 text-center font-bold">Muy Alta</td><td class="px-4 py-3 text-center"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Quick Win</span></td></tr>
+                        <tr class="border-b"><td class="px-4 py-3">4</td><td class="px-4 py-3">Contabilidad y Finanzas</td><td class="px-4 py-3 text-center"><span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-bold">5/10</span></td><td class="px-4 py-3 text-center">Media</td><td class="px-4 py-3 text-center"><span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">Incremental</span></td></tr>
+                        <tr class="border-b bg-red-50"><td class="px-4 py-3">5</td><td class="px-4 py-3 font-semibold">Gestión Comercial y Ventas B2B</td><td class="px-4 py-3 text-center"><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-bold">3/10</span></td><td class="px-4 py-3 text-center font-bold">Muy Alta</td><td class="px-4 py-3 text-center"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Estratégico</span></td></tr>
+                        <tr class="border-b"><td class="px-4 py-3">6</td><td class="px-4 py-3">Marketing y Comunicación</td><td class="px-4 py-3 text-center"><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-bold">4/10</span></td><td class="px-4 py-3 text-center">Media</td><td class="px-4 py-3 text-center"><span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">Incremental</span></td></tr>
+                        <tr class="border-b"><td class="px-4 py-3">7</td><td class="px-4 py-3">Gestión Humana y Capacitación</td><td class="px-4 py-3 text-center"><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-bold">4/10</span></td><td class="px-4 py-3 text-center">Media</td><td class="px-4 py-3 text-center"><span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Largo Plazo</span></td></tr>
+                        <tr class="border-b"><td class="px-4 py-3">8</td><td class="px-4 py-3">Eventos y Centro de Convenciones</td><td class="px-4 py-3 text-center"><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-bold">4/10</span></td><td class="px-4 py-3 text-center">Alta</td><td class="px-4 py-3 text-center"><span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Estratégico</span></td></tr>
+                        <tr class="border-b"><td class="px-4 py-3">9</td><td class="px-4 py-3">Control de Gestión y Costos</td><td class="px-4 py-3 text-center"><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-bold">4/10</span></td><td class="px-4 py-3 text-center">Alta</td><td class="px-4 py-3 text-center"><span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Quick Win</span></td></tr>
+                        <tr><td class="px-4 py-3">10</td><td class="px-4 py-3">Tecnología e Informática</td><td class="px-4 py-3 text-center"><span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-bold">5/10</span></td><td class="px-4 py-3 text-center">Media</td><td class="px-4 py-3 text-center"><span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Habilitador</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- NEW: Gaps en Personas from Phase 1 -->
+        <section id="gaps" class="mb-12 page-break">
+            <h3 class="section-title text-2xl font-bold mb-6">Análisis de Gaps</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Gaps de Conocimiento -->
+                <div class="bg-white rounded-lg shadow p-5">
+                    <h4 class="font-bold text-lg mb-4 text-red-700">🎓 Gaps de Conocimiento</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-red-500 mt-1">●</span><span><strong>Gerente de Ingeniería:</strong> Uso efectivo de MaintainX para gestión de activos</span></li>
+                        <li class="flex items-start gap-2"><span class="text-red-500 mt-1">●</span><span><strong>Gerente de Contabilidad:</strong> Técnicas de integración y reconciliación automatizada</span></li>
+                        <li class="flex items-start gap-2"><span class="text-red-500 mt-1">●</span><span><strong>Chef Ejecutivo:</strong> Estandarización de recetas y análisis de costos</span></li>
+                        <li class="flex items-start gap-2"><span class="text-red-500 mt-1">●</span><span><strong>Sub Gerente General:</strong> Análisis estratégico de datos e insights</span></li>
+                        <li class="flex items-start gap-2"><span class="text-red-500 mt-1">●</span><span><strong>Gerente Control de Gestión:</strong> Herramientas de BI y visualización</span></li>
+                    </ul>
+                </div>
+
+                <!-- Gaps de Capacitación -->
+                <div class="bg-white rounded-lg shadow p-5">
+                    <h4 class="font-bold text-lg mb-4 text-orange-700">📚 Gaps de Capacitación</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-orange-500 mt-1">●</span><span><strong>MaintainX:</strong> Todo el equipo de Ingeniería necesita capacitación formal</span></li>
+                        <li class="flex items-start gap-2"><span class="text-orange-500 mt-1">●</span><span><strong>Análisis de datos:</strong> Gerentes necesitan formación en interpretación de reportes</span></li>
+                        <li class="flex items-start gap-2"><span class="text-orange-500 mt-1">●</span><span><strong>Gestión del tiempo:</strong> Priorización tareas urgentes vs rutinarias</span></li>
+                        <li class="flex items-start gap-2"><span class="text-orange-500 mt-1">●</span><span><strong>Costos y pricing:</strong> Estrategias de costeo y fijación de precios</span></li>
+                        <li class="flex items-start gap-2"><span class="text-orange-500 mt-1">●</span><span><strong>Planificación de eventos:</strong> Técnicas de organización y ejecución</span></li>
+                    </ul>
+                </div>
+
+                <!-- Gaps de Procesos -->
+                <div class="bg-white rounded-lg shadow p-5">
+                    <h4 class="font-bold text-lg mb-4 text-yellow-700">⚙️ Gaps de Procesos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2"><span class="text-yellow-600 mt-1">●</span><span>Falta de procedimientos documentados para inspecciones de calidad</span></li>
+                        <li class="flex items-start gap-2"><span class="text-yellow-600 mt-1">●</span><span>Ausencia de SLAs definidos para tiempos de respuesta de mantenimiento</span></li>
+                        <li class="flex items-start gap-2"><span class="text-yellow-600 mt-1">●</span><span>Sin proceso formal de aprobación de gastos digitalizado</span></li>
+                        <li class="flex items-start gap-2"><span class="text-yellow-600 mt-1">●</span><span>Falta de workflow estructurado para solicitudes entre departamentos</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Core Systems with Vendor Info from Phase 1 -->
+        <section id="sistemas-core" class="mb-12">
+            <h3 class="section-title text-2xl font-bold mb-6">Sistemas Core y Criticidad</h3>
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table class="w-full text-sm">
+                    <thead class="bg-gray-800 text-white">
+                        <tr>
+                            <th class="px-4 py-3 text-left">Sistema</th>
+                            <th class="px-4 py-3 text-left">Dominio</th>
+                            <th class="px-4 py-3 text-center">Vendor</th>
+                            <th class="px-4 py-3 text-center">Criticidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b bg-red-50"><td class="px-4 py-3 font-medium">Opera</td><td class="px-4 py-3">Property Management</td><td class="px-4 py-3 text-center">Oracle</td><td class="px-4 py-3 text-center"><span class="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">CRÍTICO</span></td></tr>
+                        <tr class="border-b bg-red-50"><td class="px-4 py-3 font-medium">Micros/Simphony</td><td class="px-4 py-3">POS - Restaurantes</td><td class="px-4 py-3 text-center">Oracle</td><td class="px-4 py-3 text-center"><span class="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">CRÍTICO</span></td></tr>
+                        <tr class="border-b bg-red-50"><td class="px-4 py-3 font-medium">SAP Business One</td><td class="px-4 py-3">ERP/Contabilidad</td><td class="px-4 py-3 text-center">SAP</td><td class="px-4 py-3 text-center"><span class="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">CRÍTICO</span></td></tr>
+                        <tr class="border-b bg-red-50"><td class="px-4 py-3 font-medium">Satcom</td><td class="px-4 py-3">Facturación Electrónica</td><td class="px-4 py-3 text-center">Local</td><td class="px-4 py-3 text-center"><span class="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">CRÍTICO</span></td></tr>
+                        <tr class="border-b bg-orange-50"><td class="px-4 py-3 font-medium">MaintainX</td><td class="px-4 py-3">CMMS (en implementación)</td><td class="px-4 py-3 text-center">MaintainX</td><td class="px-4 py-3 text-center"><span class="bg-orange-500 text-white px-2 py-1 rounded text-xs font-bold">ALTO</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Integraciones Críticas -->
+            <div class="mt-6 p-5 bg-white rounded-lg shadow">
+                <h4 class="font-bold text-lg mb-4" style="color: var(--brand);">🔗 Integraciones Críticas Necesarias</h4>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                        <div class="font-semibold">Opera ↔ SAP</div>
+                        <div class="text-sm text-gray-600">Sincronización de ingresos y cuentas por cobrar</div>
+                    </div>
+                    <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                        <div class="font-semibold">Micros/Simphony ↔ Satcom ↔ SAP</div>
+                        <div class="text-sm text-gray-600">Flujo de facturación unificado</div>
+                    </div>
+                    <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                        <div class="font-semibold">MaintainX ↔ SAP</div>
+                        <div class="text-sm text-gray-600">Costos de mantenimiento integrados</div>
+                    </div>
+                    <div class="p-3 bg-blue-50 rounded border-l-4 border-blue-500">
+                        <div class="font-semibold">CRM (nuevo) ↔ Opera</div>
+                        <div class="text-sm text-gray-600">Perfiles de huéspedes y cotizaciones</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deuda Técnica -->
+            <div class="mt-6 p-5 bg-white rounded-lg shadow">
+                <h4 class="font-bold text-lg mb-4 text-red-700">⚠️ Deuda Técnica</h4>
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="flex items-center gap-3 p-2 bg-red-50 rounded">
+                        <span class="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">ALTA</span>
+                        <span class="text-sm">Uso de Excel como base de datos para mantenimiento</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-2 bg-red-50 rounded">
+                        <span class="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">ALTA</span>
+                        <span class="text-sm">WhatsApp como sistema de gestión de tareas</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-2 bg-yellow-50 rounded">
+                        <span class="bg-yellow-500 text-white px-2 py-1 rounded text-xs font-bold">MEDIA</span>
+                        <span class="text-sm">Múltiples fuentes de verdad para datos de ventas</span>
+                    </div>
+                    <div class="flex items-center gap-3 p-2 bg-yellow-50 rounded">
+                        <span class="bg-yellow-500 text-white px-2 py-1 rounded text-xs font-bold">MEDIA</span>
+                        <span class="text-sm">Falta de backup centralizado de documentación</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Roadmap from Phase 1 -->
+        <section id="roadmap" class="mb-12 page-break">
+            <h3 class="section-title text-2xl font-bold mb-6">Próximos Pasos Recomendados</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Corto Plazo -->
+                <div class="bg-green-50 border-2 border-green-200 rounded-lg p-5">
+                    <div class="text-xs uppercase text-green-700 font-bold mb-3">🎯 Corto Plazo (30 días)</div>
+                    <ol class="space-y-3 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="bg-green-200 text-green-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold shrink-0">1</span>
+                            <span><strong>Completar MaintainX:</strong> Capacitar 100% equipo Ingeniería y migrar todas las órdenes</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="bg-green-200 text-green-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold shrink-0">2</span>
+                            <span><strong>Digitalizar inspecciones:</strong> Formularios digitales con JotForm o similar</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="bg-green-200 text-green-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold shrink-0">3</span>
+                            <span><strong>Automatizar reportes:</strong> Power Automate para consolidación diaria de ingresos</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Mediano Plazo -->
+                <div class="bg-blue-50 border-2 border-blue-200 rounded-lg p-5">
+                    <div class="text-xs uppercase text-blue-700 font-bold mb-3">🚀 Mediano Plazo (90 días)</div>
+                    <ol class="space-y-3 text-sm" start="4">
+                        <li class="flex items-start gap-2">
+                            <span class="bg-blue-200 text-blue-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold shrink-0">4</span>
+                            <span><strong>Implementar CRM:</strong> Seleccionar HubSpot, Salesforce o Zoho e integrar con Opera</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="bg-blue-200 text-blue-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold shrink-0">5</span>
+                            <span><strong>API de integración:</strong> Capa de datos unificada Opera/Micros/SAP</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="bg-blue-200 text-blue-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold shrink-0">6</span>
+                            <span><strong>Documentar procesos:</strong> SOPs para los 10 procesos más críticos</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Largo Plazo -->
+                <div class="bg-purple-50 border-2 border-purple-200 rounded-lg p-5">
+                    <div class="text-xs uppercase text-purple-700 font-bold mb-3">📈 Largo Plazo (180 días)</div>
+                    <ol class="space-y-3 text-sm" start="7">
+                        <li class="flex items-start gap-2">
+                            <span class="bg-purple-200 text-purple-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold shrink-0">7</span>
+                            <span><strong>Dashboard ejecutivo BI:</strong> Power BI centralizado con KPIs de todas las áreas</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="bg-purple-200 text-purple-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold shrink-0">8</span>
+                            <span><strong>Flujos de aprobación:</strong> Workflow digital para solicitudes de pago y compras</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="bg-purple-200 text-purple-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold shrink-0">9</span>
+                            <span><strong>Capacitación continua:</strong> Plan anual de formación en herramientas digitales</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Madurez Digital (Radar Chart) -->
+        <section id="madurez" class="mb-12 page-break">
+            <h3 class="section-title text-2xl font-bold mb-6">Madurez Digital por Área</h3>
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="max-w-lg mx-auto">
+                    <canvas id="radarChart"></canvas>
+                </div>
+                <p class="text-center text-gray-500 mt-4 text-sm">Escala 1-10 basada en procesos documentados, sistemas integrados y pain points</p>
+            </div>
+        </section>
+
+        <!-- Mapa de Calor de Dolor -->
+        <section id="mapa-calor" class="mb-12">
+            <h3 class="section-title text-2xl font-bold mb-6">2. Mapa de Calor de Dolor por Departamento</h3>
+            <p class="text-gray-600 mb-4 text-sm">💡 Haz clic en una fila para ver los pain points específicos</p>
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table class="w-full">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-3 text-left">Departamento</th>
+                            <th class="px-4 py-3 text-center">Crítico</th>
+                            <th class="px-4 py-3 text-center">Alto</th>
+                            <th class="px-4 py-3 text-center">Medio</th>
+                            <th class="px-4 py-3 text-center">Bajo</th>
+                            <th class="px-4 py-3 text-center">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="heatmapBody">
+                        
+            <tr class="border-b hover:bg-blue-50 cursor-pointer transition-colors" onclick="toggleDetails('dept-1')">
+                <td class="px-4 py-3 font-medium">
+                    <span class="inline-flex items-center">
+                        <svg id="icon-dept-1" class="w-4 h-4 mr-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Alimentos y Bebidas
+                    </span>
+                </td>
+                <td class="px-4 py-3 text-center heat-critical font-bold">1</td>
+                <td class="px-4 py-3 text-center heat-high">3</td>
+                <td class="px-4 py-3 text-center heat-medium">14</td>
+                <td class="px-4 py-3 text-center ">-</td>
+                <td class="px-4 py-3 text-center font-bold">18</td>
+            </tr>
+            <tr id="dept-1" class="hidden bg-gray-50">
+                <td colspan="6" class="px-6 py-4">
+                    <div class="text-sm font-medium text-gray-600 mb-2">Pain Points - Alimentos y Bebidas (Top 10):</div>
+                    <div class="bg-white rounded border p-3 max-h-64 overflow-y-auto">
+                        
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Limitación de tiempo para resolver problemas fuera del horario laboral regular</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de un proceso diario estructurado que dificulta la planificación.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de autonomía en la toma de decisiones operativas</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Difficulty in meeting projected revenue targets and needing to find alternatives to generate missing income.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dificultad para estandarizar recetas debido a la variabilidad en la preparación diaria.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 6</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Ineficiencia en la coordinación con RRHH</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 6</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Revisión manual de precios de proveedores que consume tiempo.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dificultad para estandarizar recetas debido a la variabilidad en la preparación diaria.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Revisión manual de precios de proveedores que consume tiempo.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de un proceso diario estructurado que dificulta la planificación.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 5</span>
+                    </div>
+                </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="border-b hover:bg-blue-50 cursor-pointer transition-colors" onclick="toggleDetails('dept-2')">
+                <td class="px-4 py-3 font-medium">
+                    <span class="inline-flex items-center">
+                        <svg id="icon-dept-2" class="w-4 h-4 mr-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Comercial
+                    </span>
+                </td>
+                <td class="px-4 py-3 text-center heat-critical font-bold">2</td>
+                <td class="px-4 py-3 text-center heat-high">6</td>
+                <td class="px-4 py-3 text-center heat-medium">26</td>
+                <td class="px-4 py-3 text-center ">-</td>
+                <td class="px-4 py-3 text-center font-bold">18</td>
+            </tr>
+            <tr id="dept-2" class="hidden bg-gray-50">
+                <td colspan="6" class="px-6 py-4">
+                    <div class="text-sm font-medium text-gray-600 mb-2">Pain Points - Comercial (Top 10):</div>
+                    <div class="bg-white rounded border p-3 max-h-64 overflow-y-auto">
+                        
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La falta de un CRM implementado dificulta el seguimiento a cotizaciones y la gestión de la base de datos.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La toma de decisiones críticas sobre pricing es complicada por el contexto económico desafiante de Bolivia.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de una base de datos de clientes que incorpore datos de contacto y necesidades específicas.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dificultades en la implementación de campañas de marketing alineadas con la estrategia Value for Money.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">El envío de cotizaciones y respuestas mediante WhatsApp se demora, afectando la rapidez en la atención al cliente.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Complexity in managing multiple marketing channels and tools.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La necesidad de gestionar múltiples segmentos de mercado requiere estrategias comerciales diferenciadas, lo que complica la planificación y ejecución.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dificultades para coordinar el abastecimiento y lanzamientos entre departamentos.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La resolución de quejas de clientes es un proceso que consume tiempo y puede afectar la satisfacción del cliente.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 6</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Manual coordination and approval of marketing materials is time-consuming.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 6</span>
+                    </div>
+                </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="border-b hover:bg-blue-50 cursor-pointer transition-colors" onclick="toggleDetails('dept-3')">
+                <td class="px-4 py-3 font-medium">
+                    <span class="inline-flex items-center">
+                        <svg id="icon-dept-3" class="w-4 h-4 mr-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Ingeniería
+                    </span>
+                </td>
+                <td class="px-4 py-3 text-center heat-critical font-bold">3</td>
+                <td class="px-4 py-3 text-center heat-high">3</td>
+                <td class="px-4 py-3 text-center heat-medium">8</td>
+                <td class="px-4 py-3 text-center ">-</td>
+                <td class="px-4 py-3 text-center font-bold">14</td>
+            </tr>
+            <tr id="dept-3" class="hidden bg-gray-50">
+                <td colspan="6" class="px-6 py-4">
+                    <div class="text-sm font-medium text-gray-600 mb-2">Pain Points - Ingeniería (Top 10):</div>
+                    <div class="bg-white rounded border p-3 max-h-64 overflow-y-auto">
+                        
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de una herramienta de gestión de mantenimiento</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Gestionar reparaciones con tiempos muy ajustados y falta de recursos</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Lack of a specialized maintenance management system</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de planificación y coordinación con otros áreas</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de análisis de datos</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 6</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Manual coordination and communication using WhatsApp and Outlook</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 6</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Inventarios ineficientes</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de planificación y coordinación con otros áreas</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de una herramienta de gestión de mantenimiento</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de análisis de datos</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="border-b hover:bg-blue-50 cursor-pointer transition-colors" onclick="toggleDetails('dept-4')">
+                <td class="px-4 py-3 font-medium">
+                    <span class="inline-flex items-center">
+                        <svg id="icon-dept-4" class="w-4 h-4 mr-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Finanzas
+                    </span>
+                </td>
+                <td class="px-4 py-3 text-center heat-critical font-bold">5</td>
+                <td class="px-4 py-3 text-center heat-high">15</td>
+                <td class="px-4 py-3 text-center heat-medium">51</td>
+                <td class="px-4 py-3 text-center ">-</td>
+                <td class="px-4 py-3 text-center font-bold">12</td>
+            </tr>
+            <tr id="dept-4" class="hidden bg-gray-50">
+                <td colspan="6" class="px-6 py-4">
+                    <div class="text-sm font-medium text-gray-600 mb-2">Pain Points - Finanzas (Top 10):</div>
+                    <div class="bg-white rounded border p-3 max-h-64 overflow-y-auto">
+                        
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Ausencia de procedimientos formalmente establecidos en las empresas</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 9</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La conciliación entre tesorería y contabilidad es un proceso crítico que puede ser objeto de auditoría.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 9</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">El proceso de solicitud de insumos para la cocina es manual y debería estar automatizado.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Problemas frecuentes en las bases de datos que alimentan Power BI, afectando la integridad de la información.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dificultad para planificar adecuadamente el tiempo asignado a cada actividad debido a la naturaleza dinámica del grupo empresarial.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Diferencias entre la facturación y las ventas totales debido a información incorrecta del cliente.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de acceso a sistemas contables para obtener información</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La implementación del nuevo sistema SAP está causando incertidumbre y posibles problemas operativos.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Entrega de información tardía por parte de otras áreas de la empresa, lo cual dificulta y retrasa la elaboración de los estados financieros mensuales.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La captura de información financiera es manual e intensiva, lo que consume mucho tiempo.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 8</span>
+                    </div>
+                </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="border-b hover:bg-blue-50 cursor-pointer transition-colors" onclick="toggleDetails('dept-5')">
+                <td class="px-4 py-3 font-medium">
+                    <span class="inline-flex items-center">
+                        <svg id="icon-dept-5" class="w-4 h-4 mr-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Operaciones
+                    </span>
+                </td>
+                <td class="px-4 py-3 text-center heat-critical font-bold">5</td>
+                <td class="px-4 py-3 text-center heat-high">9</td>
+                <td class="px-4 py-3 text-center heat-medium">14</td>
+                <td class="px-4 py-3 text-center ">-</td>
+                <td class="px-4 py-3 text-center font-bold">10</td>
+            </tr>
+            <tr id="dept-5" class="hidden bg-gray-50">
+                <td colspan="6" class="px-6 py-4">
+                    <div class="text-sm font-medium text-gray-600 mb-2">Pain Points - Operaciones (Top 10):</div>
+                    <div class="bg-white rounded border p-3 max-h-64 overflow-y-auto">
+                        
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Revisión de información crítica al inicio del día es esencial; si falla, todo el día será reactivo.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 9</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">El entorno externo es nuestra peor amenaza ya que la coyuntura actual local e internacional influye de manera directa en la operativa logística.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 9</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Lack of a system to quickly update and calculate food costs with current prices.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Inspecciones de áreas del hotel son críticas, pero pueden ser difíciles de realizar de manera efectiva.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Demora en generar reportes o armarlos uno mismo, lo que quita mucho tiempo.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">El cambio de sistema de CM NET a SAP simplificará muchas actividades.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Lack of specific spare parts can cause equipment to stop functioning.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Complexity in scheduling vacations for a large team.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de comunicación constante entre departamentos puede causar problemas operativos.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Burocracia en los procesos contables que genera confusión y retrasos.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="border-b hover:bg-blue-50 cursor-pointer transition-colors" onclick="toggleDetails('dept-6')">
+                <td class="px-4 py-3 font-medium">
+                    <span class="inline-flex items-center">
+                        <svg id="icon-dept-6" class="w-4 h-4 mr-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Gerencia General
+                    </span>
+                </td>
+                <td class="px-4 py-3 text-center heat-critical font-bold">3</td>
+                <td class="px-4 py-3 text-center heat-high">3</td>
+                <td class="px-4 py-3 text-center heat-medium">12</td>
+                <td class="px-4 py-3 text-center ">-</td>
+                <td class="px-4 py-3 text-center font-bold">8</td>
+            </tr>
+            <tr id="dept-6" class="hidden bg-gray-50">
+                <td colspan="6" class="px-6 py-4">
+                    <div class="text-sm font-medium text-gray-600 mb-2">Pain Points - Gerencia General (Top 10):</div>
+                    <div class="bg-white rounded border p-3 max-h-64 overflow-y-auto">
+                        
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dificultad para despegarse del detalle operativo diario y tener una visión más estratégica del negocio.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La Gerencia de Finanzas está ocupada con tareas operativas, lo que reduce el tiempo para actividades estratégicas.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La gestión de inventarios y abastecimiento es complicada y requiere mucho tiempo.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Mejorar la comunicación y alineación entre los diferentes sectores/áreas del hotel.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Imprevistos en la operativa diaria que afectan la eficiencia del proceso.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">El tiempo destinado a planes futuros y creación de valor es marginal debido a tareas operativas.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dificultades en la coordinación con los equipos de operaciones debido a la falta de alineación en los objetivos diarios.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Manejo de información y registros en Excel en lugar de un sistema automatizado.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 6</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La revisión de KPIs operativos es un proceso manual que consume tiempo.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 6</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dificultad para despegarse del detalle operativo diario y tener una visión más estratégica del negocio.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 5</span>
+                    </div>
+                </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="border-b hover:bg-blue-50 cursor-pointer transition-colors" onclick="toggleDetails('dept-7')">
+                <td class="px-4 py-3 font-medium">
+                    <span class="inline-flex items-center">
+                        <svg id="icon-dept-7" class="w-4 h-4 mr-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Recepción y Hospedaje
+                    </span>
+                </td>
+                <td class="px-4 py-3 text-center ">-</td>
+                <td class="px-4 py-3 text-center heat-high">2</td>
+                <td class="px-4 py-3 text-center heat-medium">6</td>
+                <td class="px-4 py-3 text-center ">-</td>
+                <td class="px-4 py-3 text-center font-bold">8</td>
+            </tr>
+            <tr id="dept-7" class="hidden bg-gray-50">
+                <td colspan="6" class="px-6 py-4">
+                    <div class="text-sm font-medium text-gray-600 mb-2">Pain Points - Recepción y Hospedaje (Top 10):</div>
+                    <div class="bg-white rounded border p-3 max-h-64 overflow-y-auto">
+                        
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Rotación de personal frecuente que afecta la continuidad del servicio.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dificultad en la supervisión constante del equipo, lo que requiere micromanagement.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Necesidad de herramientas adicionales para motivar al equipo.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 6</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dificultad en la supervisión constante del equipo, lo que requiere micromanagement.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Rotación de personal frecuente que afecta la continuidad del servicio.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Necesidad de herramientas adicionales para motivar al equipo.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Los tiempos de espera en la recepción están causando frustración tanto a los empleados como a los clientes.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Los retrasos en el proceso de check-in generan frustración tanto en el personal como en los huéspedes.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="border-b hover:bg-blue-50 cursor-pointer transition-colors" onclick="toggleDetails('dept-8')">
+                <td class="px-4 py-3 font-medium">
+                    <span class="inline-flex items-center">
+                        <svg id="icon-dept-8" class="w-4 h-4 mr-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Centro de Convenciones
+                    </span>
+                </td>
+                <td class="px-4 py-3 text-center ">-</td>
+                <td class="px-4 py-3 text-center heat-high">2</td>
+                <td class="px-4 py-3 text-center heat-medium">5</td>
+                <td class="px-4 py-3 text-center ">-</td>
+                <td class="px-4 py-3 text-center font-bold">7</td>
+            </tr>
+            <tr id="dept-8" class="hidden bg-gray-50">
+                <td colspan="6" class="px-6 py-4">
+                    <div class="text-sm font-medium text-gray-600 mb-2">Pain Points - Centro de Convenciones (Top 10):</div>
+                    <div class="bg-white rounded border p-3 max-h-64 overflow-y-auto">
+                        
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de alineación entre departamentos antes de los eventos, lo que puede llevar a malentendidos y errores en la ejecución.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Control manual de costos operativos que consume tiempo y puede llevar a errores.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dependencia de múltiples herramientas que no están integradas, lo que complica la gestión de eventos.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 6</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de alineación entre departamentos antes de los eventos, lo que puede llevar a malentendidos y errores en la ejecución.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Control manual de costos operativos que consume tiempo y puede llevar a errores.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dependencia de múltiples herramientas que no están integradas, lo que complica la gestión de eventos.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Frustraciones por la falta de tiempo para organizar eventos adecuadamente.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="border-b hover:bg-blue-50 cursor-pointer transition-colors" onclick="toggleDetails('dept-9')">
+                <td class="px-4 py-3 font-medium">
+                    <span class="inline-flex items-center">
+                        <svg id="icon-dept-9" class="w-4 h-4 mr-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Control de Gestión
+                    </span>
+                </td>
+                <td class="px-4 py-3 text-center heat-critical font-bold">1</td>
+                <td class="px-4 py-3 text-center heat-high">3</td>
+                <td class="px-4 py-3 text-center heat-medium">6</td>
+                <td class="px-4 py-3 text-center ">-</td>
+                <td class="px-4 py-3 text-center font-bold">6</td>
+            </tr>
+            <tr id="dept-9" class="hidden bg-gray-50">
+                <td colspan="6" class="px-6 py-4">
+                    <div class="text-sm font-medium text-gray-600 mb-2">Pain Points - Control de Gestión (Top 10):</div>
+                    <div class="bg-white rounded border p-3 max-h-64 overflow-y-auto">
+                        
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La atención a revisiones y solicitudes de información por parte de la Administración tributaria es un proceso que consume tiempo y recursos.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Information required for analysis is not always available or organized.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La conciliación entre los ingresos del sistema Opera y los registros contables en SAP es manual y consume tiempo.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La elaboración de informes mensuales requiere consolidar información de múltiples fuentes, lo que es tedioso.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 6</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Organizing information is considered inefficient or redundant.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 6</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La conciliación entre los ingresos del sistema Opera y los registros contables en SAP es manual y consume tiempo.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La elaboración de informes mensuales requiere consolidar información de múltiples fuentes, lo que es tedioso.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">La atención a revisiones y solicitudes de información por parte de la Administración tributaria es un proceso que consume tiempo y recursos.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Information required for analysis is not always available or organized.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Organizing information is considered inefficient or redundant.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="border-b hover:bg-blue-50 cursor-pointer transition-colors" onclick="toggleDetails('dept-10')">
+                <td class="px-4 py-3 font-medium">
+                    <span class="inline-flex items-center">
+                        <svg id="icon-dept-10" class="w-4 h-4 mr-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        Tecnología
+                    </span>
+                </td>
+                <td class="px-4 py-3 text-center heat-critical font-bold">1</td>
+                <td class="px-4 py-3 text-center heat-high">1</td>
+                <td class="px-4 py-3 text-center heat-medium">10</td>
+                <td class="px-4 py-3 text-center ">-</td>
+                <td class="px-4 py-3 text-center font-bold">6</td>
+            </tr>
+            <tr id="dept-10" class="hidden bg-gray-50">
+                <td colspan="6" class="px-6 py-4">
+                    <div class="text-sm font-medium text-gray-600 mb-2">Pain Points - Tecnología (Top 10):</div>
+                    <div class="bg-white rounded border p-3 max-h-64 overflow-y-auto">
+                        
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Problemas recurrentes con la disponibilidad de servicios críticos como Oracle Simphony y SATCOM.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 9</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de visibilidad en el estado de la red de comunicaciones antes de la llegada del equipo de trabajo.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de integración entre sistemas de gestión de ventas y contabilidad, lo que requiere conciliaciones manuales.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dependencia de múltiples sistemas y herramientas para la gestión de soporte.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 6</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de automatización en la gestión de proyectos tecnológicos, lo que complica el seguimiento.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 6</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Problemas de comunicación y coordinación con el equipo en La Paz.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de visibilidad en el estado de la red de comunicaciones antes de la llegada del equipo de trabajo.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dependencia de múltiples sistemas y herramientas para la gestión de soporte.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Problemas de comunicación y coordinación con el equipo en La Paz.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de integración entre sistemas de gestión de ventas y contabilidad, lo que requiere conciliaciones manuales.</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 5</span>
+                    </div>
+                </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="border-b hover:bg-blue-50 cursor-pointer transition-colors" onclick="toggleDetails('dept-11')">
+                <td class="px-4 py-3 font-medium">
+                    <span class="inline-flex items-center">
+                        <svg id="icon-dept-11" class="w-4 h-4 mr-2 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                        General
+                    </span>
+                </td>
+                <td class="px-4 py-3 text-center heat-critical font-bold">4</td>
+                <td class="px-4 py-3 text-center heat-high">14</td>
+                <td class="px-4 py-3 text-center heat-medium">27</td>
+                <td class="px-4 py-3 text-center ">-</td>
+                <td class="px-4 py-3 text-center font-bold">6</td>
+            </tr>
+            <tr id="dept-11" class="hidden bg-gray-50">
+                <td colspan="6" class="px-6 py-4">
+                    <div class="text-sm font-medium text-gray-600 mb-2">Pain Points - General (Top 10):</div>
+                    <div class="bg-white rounded border p-3 max-h-64 overflow-y-auto">
+                        
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Gestión de documentación y cumplimiento normativo es complicada y propensa a errores.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 9</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Los cambios que surgen una vez empezado el proyecto representan costos y tiempos adicionales.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 9</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de comunicación efectiva entre áreas</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Falta de planificación clara provoca quiebres de stock y compras de urgencia.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Sobrecarga laboral limita el tiempo para cumplir tareas</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Desorden y poca claridad en cuanto a lo que se quiere, definición de mi interlocutor en el tema.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Dificultades para que los proveedores realicen trabajos de calidad en el tiempo preciso.</span>
+                        <span class="text-orange-500 text-xs font-medium ml-2 whitespace-nowrap">High | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Unpredictable daily challenges due to the nature of supervising multiple projects simultaneously.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Frequent need for urgent decision-making due to unforeseen issues.</span>
+                        <span class="text-red-600 text-xs font-medium ml-2 whitespace-nowrap">Critical | Int: 8</span>
+                    </div>
+                </div>
+                <div class="py-2 border-b border-gray-100 last:border-0">
+                    <div class="flex justify-between items-start">
+                        <span class="text-gray-700 text-sm flex-1">Muchas actividades se realizan manualmente, especialmente la generación de cuadros de seguimiento</span>
+                        <span class="text-yellow-600 text-xs font-medium ml-2 whitespace-nowrap">Medium | Int: 7</span>
+                    </div>
+                </div>
+                    </div>
+                </td>
+            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Treemap Pain Points -->
+        <section id="treemap" class="mb-12 page-break">
+            <h3 class="section-title text-2xl font-bold mb-6">3. Distribución de Pain Points por Categoría</h3>
+            <div class="bg-white rounded-lg shadow p-6">
+                <div style="height: 400px;">
+                    <canvas id="treemapChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Matriz Esfuerzo-Impacto -->
+        <section id="matriz" class="mb-12">
+            <h3 class="section-title text-2xl font-bold mb-6">4. Matriz de Automatización (Esfuerzo vs Impacto)</h3>
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Quick Wins -->
+                    <div class="border-2 border-green-500 rounded-lg p-4">
+                        <h4 class="font-bold text-green-700 mb-3">🎯 Quick Wins</h4>
+                        <p class="text-xs text-gray-500 mb-2">Alto impacto, bajo esfuerzo</p>
+                        <div class="space-y-2" id="quickWins">
+                            <div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Conciliación automática de pagos ($5,000/año)</div>
+<div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Automatización de Plan de Mantenimiento ($5,000/año)</div>
+<div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Automatización de Reportes de Estado de Equipos ($3,000/año)</div>
+<div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Automated Ticket Creation in Jira</div>
+<div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Automatización de análisis de ventas</div>
+                        </div>
+                    </div>
+                    <!-- Strategic -->
+                    <div class="border-2 border-blue-500 rounded-lg p-4">
+                        <h4 class="font-bold text-blue-700 mb-3">🚀 Estratégicos</h4>
+                        <p class="text-xs text-gray-500 mb-2">Alto impacto, alto esfuerzo</p>
+                        <div class="space-y-2" id="strategic">
+                            <div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Integración de sistemas de comunicación interna</div>
+<div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Integración automática Opera-SAP ($12,000/año)</div>
+<div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Conciliación automática de reportes ($18,000/año)</div>
+<div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Automatización de reportes a entidades reguladoras ($6,000/año)</div>
+<div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Automated System Health Check ($5,000/año)</div>
+                        </div>
+                    </div>
+                    <!-- Incremental -->
+                    <div class="border-2 border-yellow-500 rounded-lg p-4">
+                        <h4 class="font-bold text-yellow-700 mb-3">📈 Incrementales</h4>
+                        <p class="text-xs text-gray-500 mb-2">Bajo impacto, bajo esfuerzo</p>
+                        <div class="space-y-2" id="incremental">
+                            <div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Automatización de Registro de Incidencias ($1,000/año)</div>
+<div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Automatización de solicitudes de pago ($6,000/año)</div>
+<div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Automated System Health Check</div>
+<div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Automatización de creación de recetas</div>
+<div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Automatización de pedidos a proveedores</div>
+                        </div>
+                    </div>
+                    <!-- Long Term -->
+                    <div class="border-2 border-gray-500 rounded-lg p-4">
+                        <h4 class="font-bold text-gray-700 mb-3">⏳ Largo Plazo</h4>
+                        <p class="text-xs text-gray-500 mb-2">Bajo impacto, alto esfuerzo</p>
+                        <div class="space-y-2" id="longTerm">
+                            <div class="matrix-cell bg-gray-50 p-2 rounded text-sm">Control Integral de Eventos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Heatmap de Sistemas -->
+        <section id="sistemas" class="mb-12 page-break">
+            <h3 class="section-title text-2xl font-bold mb-6">5. Mapa de Sistemas</h3>
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table class="w-full">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-3 text-left">Sistema</th>
+                            <th class="px-4 py-3 text-left">Dominio</th>
+                            <th class="px-4 py-3 text-center">Criticidad</th>
+                            <th class="px-4 py-3 text-center">Uso</th>
+                            <th class="px-4 py-3 text-center">Satisfacción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="systemsBody">
+                        
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Adobe</td>
+                <td class="px-4 py-3">Productivity</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Angular</td>
+                <td class="px-4 py-3">Software Development</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">AutoCAD</td>
+                <td class="px-4 py-3">Design</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">CRM</td>
+                <td class="px-4 py-3">Sales</td>
+                <td class="px-4 py-3 text-center heat-low">CRM</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Canva</td>
+                <td class="px-4 py-3">Productivity</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">CapCut</td>
+                <td class="px-4 py-3">Productivity</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Chat GPT</td>
+                <td class="px-4 py-3">Other</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Cisco WLC</td>
+                <td class="px-4 py-3">Network Management</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Control Panel</td>
+                <td class="px-4 py-3">Operations</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center heat-low">4.0/5</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Correo Electrónico</td>
+                <td class="px-4 py-3">Communication</td>
+                <td class="px-4 py-3 text-center heat-low">Communication</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Cuaderno de notas</td>
+                <td class="px-4 py-3">Operations</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Docker</td>
+                <td class="px-4 py-3">Containerization</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Empowered GXP</td>
+                <td class="px-4 py-3">Operations</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Enersis</td>
+                <td class="px-4 py-3">Energy Management</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Envato</td>
+                <td class="px-4 py-3">Productivity</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Excel</td>
+                <td class="px-4 py-3">Maintenance Planning and Budgeting</td>
+                <td class="px-4 py-3 text-center heat-low">Productivity</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Flipsnack</td>
+                <td class="px-4 py-3">Productivity</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Flutter</td>
+                <td class="px-4 py-3">Software Development</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">GPSPS</td>
+                <td class="px-4 py-3">Operations</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center heat-low">8.0/5</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">GXP</td>
+                <td class="px-4 py-3">Hospitality</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">GitHub</td>
+                <td class="px-4 py-3">Version Control</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Google Drive / OneDrive</td>
+                <td class="px-4 py-3">Productivity</td>
+                <td class="px-4 py-3 text-center heat-low">Productivity</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Grandstream Access Points</td>
+                <td class="px-4 py-3">Network Management</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Guess Books</td>
+                <td class="px-4 py-3">Customer Feedback</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3 font-medium">Hadoop DB</td>
+                <td class="px-4 py-3">Database Management</td>
+                <td class="px-4 py-3 text-center heat-low">Other</td>
+                <td class="px-4 py-3 text-center heat-low">1x</td>
+                <td class="px-4 py-3 text-center text-gray-400">N/D</td>
+            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Timeline/Roadmap -->
+        <section id="roadmap" class="mb-12">
+            <h3 class="section-title text-2xl font-bold mb-6">6. Roadmap de Implementación</h3>
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="mermaid">
+gantt
+    title Roadmap de Transformación Digital - Los Tajibos
+    dateFormat YYYY-MM-DD
+    todayMarker on
+    section Quick Wins
+    Diagnóstico y análisis              :done, a0, 2025-10-11, 60d
+    Estabilización sistemas críticos    :active, a1, 2025-12-15, 45d
+    Automatización de reportes          :a2, after a1, 30d
+    Alertas proactivas                  :a3, after a1, 25d
+    section Estratégicos
+    Implementación CRM/ERP              :b1, 2026-02-01, 90d
+    Integración de sistemas             :b2, after b1, 75d
+    Dashboard ejecutivo BI              :b3, 2026-03-01, 60d
+    section Largo Plazo
+    Automatización avanzada             :c1, 2026-07-01, 120d
+    Centro de excelencia                :c2, after c1, 90d
+                </div>
+            </div>
+        </section>
+
+        <!-- Stakeholders -->
+        <section id="stakeholders" class="mb-12 page-break">
+            <h3 class="section-title text-2xl font-bold mb-6">Anexo: Stakeholders Entrevistados</h3>
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <table class="w-full">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-3 text-left">Nombre</th>
+                            <th class="px-4 py-3 text-left">Rol</th>
+                            <th class="px-4 py-3 text-left">Departamento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Alcantara Menacho Diego Omar</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Alimentos y Bebidas</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Caceres Juan Pablo</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Alimentos y Bebidas</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Dicolu</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Alimentos y Bebidas</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Diego Alcántara</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Alimentos y Bebidas</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Hurtado Nicolas</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Alimentos y Bebidas</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Juan Pablo Céceres</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Alimentos y Bebidas</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Marcelo Chavez</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Alimentos y Bebidas</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Nicolas Monje</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Alimentos y Bebidas</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Nicolás Hurtado</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Alimentos y Bebidas</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Nicolás Hurtado</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Alimentos y Bebidas</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Fridda Roca</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Centro de Convenciones</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Leila</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Centro de Convenciones</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Nicolas Monje</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Centro de Convenciones</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Veronica</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Centro de Convenciones</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Zaida Andrade</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Centro de Convenciones</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Anahi Camacho</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Andrea Sanchez</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Ayaviri Del Carpio Andrea</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Carlos Herrera</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Coimbra Noriega Marcia Gaby</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Emily Rivero</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Evelyn Tarabillo</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Fabiola Durán</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Heidi Bohren</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Jhenifer Ponce</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Kenlly Ramirez</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Marcia Coimbra</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Marcia Coimbra</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Marcia Raldes</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Nicolas Monje</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Nohelia Saucedo</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Vannia Valdez</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Xiomara Vargas</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Comercial</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Rocabado Rocabado Maria Antonieta</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Control de Gestión</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Mejia Mangudo Pamela Lucia</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Finanzas</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Paricollo Serrano Carlos Juvenal</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Finanzas</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Gualberto Santillan</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">General</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Meeting Participants</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">General</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Nicolas Monje</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">General</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Nicolas Monje</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">General</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Santillan Pizarro Gualberto</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">General</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Barroso Sanchez Patricia Griselda</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Gerencia General</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Mendoza Salazar Martha Elizabeth</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Gerencia General</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Cascales Gutierrez Maria Ines</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Ingeniería</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Ferrufino Hurtado Javier</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Ingeniería</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Perez Gutierrez Selva Araceli</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Operaciones</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Torres Laura</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Operaciones</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Nicolas Monje</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Recepción y Hospedaje</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Schmitt Columba Wendy Alicia</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Recepción y Hospedaje</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Wendy Schmitt</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Recepción y Hospedaje</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Parada Melgar Maria Laura</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Recursos Humanos</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Arias Zuleta Pavel Josue</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Tecnología</td>
+            </tr>
+
+            <tr class="border-b hover:bg-gray-50">
+                <td class="px-4 py-3">Flores Javier</td>
+                <td class="px-4 py-3">None</td>
+                <td class="px-4 py-3">Tecnología</td>
+            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-12 py-6 no-print">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+            <p>Diagnóstico generado: 12 de December, 2025</p>
+            <p class="mt-1">Sistema de Inteligencia Comversa | Grupo Doria Medina</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Mermaid
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+
+        // Toggle function for expandable heatmap rows
+        function toggleDetails(deptId) {
+            const detailRow = document.getElementById(deptId);
+            const icon = document.getElementById('icon-' + deptId);
+            if (detailRow.classList.contains('hidden')) {
+                detailRow.classList.remove('hidden');
+                icon.classList.add('rotate-90');
+            } else {
+                detailRow.classList.add('hidden');
+                icon.classList.remove('rotate-90');
+            }
+        }
+
+        // Radar Chart Data - Updated from Phase 1 Diagnostic
+        const radarData = {"operations": 5, "finance": 5, "technology": 5, "commercial": 3, "hr": 4, "legal": 5};
+
+        // Radar Chart
+        new Chart(document.getElementById('radarChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Operaciones', 'Finanzas', 'Tecnología', 'Comercial', 'RRHH', 'Legal'],
+                datasets: [{
+                    label: 'Los Tajibos',
+                    data: [
+                        radarData.operations || 5,
+                        radarData.finance || 5,
+                        radarData.technology || 5,
+                        radarData.commercial || 5,
+                        radarData.hr || 5,
+                        radarData.legal || 5
+                    ],
+                    backgroundColor: 'rgba(30, 58, 95, 0.2)',
+                    borderColor: '#1e3a5f',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#c9a227'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 10,
+                        ticks: { stepSize: 2 }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // Treemap Data
+        const treemapData = [{"category": "Alimentos y Bebidas", "value": 18}, {"category": "Ingeniería", "value": 14}, {"category": "Comercial", "value": 18}, {"category": "Finanzas", "value": 12}, {"category": "Operaciones", "value": 10}, {"category": "Gerencia General", "value": 8}, {"category": "Centro de Convenciones", "value": 7}, {"category": "Control de Gestión", "value": 6}, {"category": "Recepción y Hospedaje", "value": 8}, {"category": "Tecnología", "value": 6}, {"category": "General", "value": 6}];
+
+        if (treemapData.length > 0) {
+            new Chart(document.getElementById('treemapChart'), {
+                type: 'treemap',
+                data: {
+                    datasets: [{
+                        tree: treemapData,
+                        key: 'value',
+                        groups: ['category'],
+                        spacing: 1,
+                        borderWidth: 1,
+                        borderColor: 'white',
+                        backgroundColor: function(ctx) {
+                            if (!ctx.raw) return '#e5e7eb';
+                            const value = ctx.raw._data.value;
+                            const max = Math.max(...treemapData.map(d => d.value));
+                            const intensity = value / max;
+                            if (intensity > 0.7) return '#fecaca';
+                            if (intensity > 0.4) return '#fed7aa';
+                            if (intensity > 0.2) return '#fef08a';
+                            return '#bbf7d0';
+                        },
+                        labels: {
+                            display: true,
+                            formatter: function(ctx) {
+                                if (ctx.raw && ctx.raw._data) {
+                                    return ctx.raw._data.category + '\n(' + ctx.raw._data.value + ')';
+                                }
+                                return '';
+                            },
+                            color: '#1f2937',
+                            font: { size: 11 }
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: function(items) {
+                                    if (items[0] && items[0].raw && items[0].raw._data) {
+                                        return items[0].raw._data.category;
+                                    }
+                                    return '';
+                                },
+                                label: function(item) {
+                                    if (item.raw && item.raw._data) {
+                                        return item.raw._data.value + ' pain points';
+                                    }
+                                    return '';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

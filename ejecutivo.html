@@ -57,13 +57,13 @@
     <!-- KPIs de Impacto - Updated from SQLite Dec 2025 -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
       <div class="kpi p-4 bg-gray-50">
-        <div class="text-xs text-gray-500 uppercase">Procesos Mapeados</div>
-        <div class="text-3xl font-bold text-gray-900">254</div>
-        <div class="text-xs text-gray-500">en 3 empresas</div>
+        <div class="text-xs text-gray-500 uppercase">Macroprocesos Mapeados</div>
+        <div class="text-3xl font-bold text-gray-900">28</div>
+        <div class="text-xs text-gray-500">críticos en 3 empresas</div>
       </div>
       <div class="kpi-danger p-4 bg-gray-50">
         <div class="text-xs text-gray-500 uppercase">Pain Points</div>
-        <div class="text-3xl font-bold text-red-600">137</div>
+        <div class="text-3xl font-bold text-red-600">277</div>
         <div class="text-xs text-gray-500">fricciones identificadas</div>
       </div>
       <div class="kpi-warning p-4 bg-gray-50">
@@ -73,8 +73,8 @@
       </div>
       <div class="kpi-success p-4 bg-gray-50">
         <div class="text-xs text-gray-500 uppercase">Datos Consolidados</div>
-        <div class="text-3xl font-bold text-emerald-600">2,558</div>
-        <div class="text-xs text-gray-500">entidades extraídas (17 tipos)</div>
+        <div class="text-3xl font-bold text-emerald-600">2,748</div>
+        <div class="text-xs text-gray-500">entidades de inteligencia extraídas</div>
       </div>
     </div>
 
@@ -122,7 +122,7 @@
         <div class="text-xs text-gray-500 uppercase font-semibold">Situación</div>
         <p class="mt-2 text-gray-700">
           El grupo opera 3 empresas con modelos de negocio distintos (hotelería, QSR, construcción)
-          que comparten servicios financieros, legales y de auditoría. Cada empresa invirtió en
+          que comparten servicios financieros, legales y de auditoría, RRHH . Cada empresa invirtió en
           sistemas especializados (Opera, SAP, Simphony, CMNET).
         </p>
       </div>
@@ -162,6 +162,117 @@
             <strong>Lo que revelan las conversaciones:</strong> El personal YA sabe lo que hace. El problema es que
             los sistemas les obligan a trabajar de más. Cada nuevo sistema sin integración agrega carga, no la reduce.
           </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- El Costo del Traductor - Hallazgo Central -->
+    <div class="mt-8 p-6 bg-gradient-to-r from-blue-900 to-blue-700 text-white rounded-lg">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">🔗</span>
+        <div>
+          <div class="text-xl font-bold">El Hallazgo Central: "El Costo del Traductor"</div>
+          <div class="text-sm opacity-80">La fricción sistémica que frena el crecimiento</div>
+        </div>
+      </div>
+      <p class="text-lg leading-relaxed">
+        El problema no es que las empresas no generen datos; <strong>generan demasiados</strong>.
+        Los sistemas (SAP, Opera, CMNET) son islas desconectadas. Actualmente,
+        <strong>los gerentes actúan como los "traductores" o el "pegamento" humano</strong> entre sistemas que no se hablan.
+      </p>
+      <div class="grid grid-cols-2 gap-4 mt-4">
+        <div class="bg-white/10 p-3 rounded">
+          <div class="font-semibold">El Síntoma</div>
+          <div class="text-sm opacity-90">El equipo financiero dedica el <strong>80% de su tiempo a "limpiar y preparar" datos</strong> en Excel y solo el 20% a analizarlos.</div>
+        </div>
+        <div class="bg-white/10 p-3 rounded">
+          <div class="font-semibold">El Costo</div>
+          <div class="text-sm opacity-90">Decisiones tomadas sobre estados de resultados con <strong>días o semanas de antigüedad</strong>, no en tiempo real.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Las 3 Patologías -->
+    <div class="mt-8">
+      <h3 class="text-lg font-bold text-gray-900 mb-4">Las 3 Patologías Críticas del Grupo</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-5 border-2 border-red-400 rounded-lg bg-red-50">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">1</span>
+            <div class="font-bold text-red-800">"El Infierno de los Datos"</div>
+          </div>
+          <div class="text-xs text-red-600 uppercase mb-2">Comversa & Finanzas</div>
+          <p class="text-sm text-gray-700">
+            El equipo financiero está atrapado en una fábrica de manufactura de reportes.
+            <strong>Luis Nogales y Juan José Castellón</strong> descargan datos de SAP, los pasan a Excel,
+            limpian, reclasifican manualmente y luego <strong>Nicolás Monje los copia y pega a PowerPoint</strong>.
+          </p>
+          <div class="mt-3 text-xs bg-red-200 px-2 py-1 rounded">
+            🎯 Talento de alto nivel (R, SQL, PowerBI) subutilizado en "conserjería de datos"
+          </div>
+        </div>
+
+        <div class="p-5 border-2 border-amber-400 rounded-lg bg-amber-50">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-amber-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">2</span>
+            <div class="font-bold text-amber-800">"Ceguera Comercial"</div>
+          </div>
+          <div class="text-xs text-amber-600 uppercase mb-2">Los Tajibos & Comversa</div>
+          <p class="text-sm text-gray-700">
+            Se vende por reputación y ubicación, no por sistema. <strong>No existe un CRM.</strong>
+            Las cotizaciones de eventos y ventas B2B se manejan manualmente o en Excel.
+            Si un vendedor se va, se lleva su base de datos.
+          </p>
+          <div class="mt-3 text-xs bg-amber-200 px-2 py-1 rounded">
+            🎯 No hay trazabilidad de por qué se pierden ventas ni medición de conversión
+          </div>
+        </div>
+
+        <div class="p-5 border-2 border-orange-400 rounded-lg bg-orange-50">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">3</span>
+            <div class="font-bold text-orange-800">"Fractura Operativa"</div>
+          </div>
+          <div class="text-xs text-orange-600 uppercase mb-2">Bolivian Foods</div>
+          <p class="text-sm text-gray-700">
+            La operación diaria lucha contra la falta de integración y la alta rotación.
+            Existe un <strong>"doble registro" masivo</strong>: Logística ingresa datos en CMNET
+            y luego manualmente en Excel para Finanzas.
+          </p>
+          <div class="mt-3 text-xs bg-orange-200 px-2 py-1 rounded">
+            🎯 Mantenimiento vive en ciclo reactivo ("bomberazos"), sin tiempo para preventivo
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Impacto Financiero -->
+    <div class="mt-8 p-6 bg-gray-900 text-white rounded-lg">
+      <div class="text-center mb-6">
+        <div class="text-sm uppercase tracking-widest opacity-70">El Caso de Negocio</div>
+        <div class="text-4xl font-bold mt-2">~$1,000,000 USD</div>
+        <div class="text-lg opacity-80">Impacto Anual Estimado</div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-white/10 p-4 rounded text-center">
+          <div class="text-2xl font-bold text-green-400">$604,600</div>
+          <div class="text-sm opacity-80">Recuperación de Eficiencia</div>
+          <div class="text-xs opacity-60 mt-1">292 oportunidades de automatización</div>
+        </div>
+        <div class="bg-white/10 p-4 rounded text-center">
+          <div class="text-2xl font-bold text-blue-400">$225,000+</div>
+          <div class="text-sm opacity-80">Potencial de Crecimiento</div>
+          <div class="text-xs opacity-60 mt-1">CRM, Demand Gen, Cross-selling</div>
+        </div>
+        <div class="bg-white/10 p-4 rounded text-center">
+          <div class="text-2xl font-bold text-red-400">$165,000</div>
+          <div class="text-sm opacity-80">Fuga de Ingresos</div>
+          <div class="text-xs opacity-60 mt-1">Errores facturación, cotizaciones lentas</div>
+        </div>
+      </div>
+      <div class="mt-6 text-center">
+        <div class="inline-block bg-amber-500 text-gray-900 px-6 py-3 rounded-lg font-bold">
+          Inversión Fase 2: $93,998 USD → ROI: >10x en el primer año
         </div>
       </div>
     </div>
@@ -228,7 +339,7 @@ flowchart TB
           <span class="text-2xl">🍔</span>
           <div class="font-bold text-lg text-red-800">BOLIVIAN FOODS</div>
         </div>
-        <div class="text-xs text-red-600 uppercase mt-2">SI DESAPARECE: EL GRUPO MUERE</div>
+        <div class="text-xs text-red-600 uppercase mt-2">SI DESAPARECE: SE PIERDE LA ÚNICA EMPRESA RENTABLE</div>
         <ul class="mt-3 text-sm text-gray-700 space-y-1">
           <li>• <strong>$162M USD</strong> en ingresos (95%+ del efectivo)</li>
           <li>• Fondea operaciones de LTH y Green Tower</li>
@@ -1620,7 +1731,7 @@ gantt
           </li>
           <li class="flex items-start gap-2">
             <span class="text-blue-500 font-bold">•</span>
-            <span><strong>2,558 entidades</strong> de inteligencia extraídas</span>
+            <span><strong>2,748 entidades</strong> de inteligencia extraídas</span>
           </li>
           <li class="flex items-start gap-2">
             <span class="text-blue-500 font-bold">•</span>
@@ -1632,7 +1743,7 @@ gantt
           </li>
           <li class="flex items-start gap-2">
             <span class="text-blue-500 font-bold">•</span>
-            <span><strong>$587K-657K USD/año</strong> valor potencial de mejoras</span>
+            <span><strong>~$1,000,000 USD/año</strong> impacto anual estimado</span>
           </li>
         </ul>
       </div>
@@ -1723,7 +1834,7 @@ gantt
     <div class="mt-10 text-center text-gray-500 text-sm">
       <hr class="mb-6">
       <p>Documento preparado mediante análisis de inteligencia conversacional</p>
-      <p class="mt-1">68 entrevistas procesadas | 2,558 datos consolidados | Diciembre 2025</p>
+      <p class="mt-1">68 entrevistas procesadas | 2,748 datos consolidados | Diciembre 2025</p>
       <p class="mt-3 font-medium text-gray-700">© Comversa Intelligence Platform</p>
     </div>
   </section>

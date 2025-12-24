@@ -127,8 +127,8 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div class="bg-gradient-to-br from-blue-900 to-blue-700 text-white rounded-lg p-6 shadow-lg">
                     <div class="text-sm uppercase tracking-wide opacity-80">Madurez Digital</div>
-                    <div class="text-5xl font-bold mt-2">4<span class="text-2xl">/10</span></div>
-                    <div class="text-sm mt-2 opacity-80">Sistemas fragmentados, migración ERP en curso</div>
+                    <div class="text-5xl font-bold mt-2">2<span class="text-2xl">/5</span></div>
+                    <div class="text-sm mt-2 opacity-80">Nivel 2: Emergente/Reactivo — Dependencia de "heroísmo manual"</div>
                 </div>
                 <div class="bg-gradient-to-br from-emerald-600 to-emerald-500 text-white rounded-lg p-6 shadow-lg">
                     <div class="text-sm uppercase tracking-wide opacity-80">Oportunidades Identificadas</div>
@@ -137,8 +137,8 @@
                 </div>
                 <div class="bg-gradient-to-br from-amber-500 to-orange-500 text-white rounded-lg p-6 shadow-lg">
                     <div class="text-sm uppercase tracking-wide opacity-80">Discovery</div>
-                    <div class="text-3xl font-bold mt-2">~27 hrs</div>
-                    <div class="text-sm mt-2 opacity-80">18 stakeholders entrevistados</div>
+                    <div class="text-3xl font-bold mt-2">13</div>
+                    <div class="text-sm mt-2 opacity-80">Roles clave analizados</div>
                 </div>
             </div>
 
@@ -161,6 +161,121 @@
                     <div class="border-l-4 border-purple-500 pl-4 py-2">
                         <div class="font-semibold text-gray-800">4. Concentración en Finanzas</div>
                         <p class="text-sm text-gray-600 mt-1">52 pain points identificados en total, con concentración significativa en Finanzas, indicando necesidad urgente de automatización en procesos financieros.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desafíos Comunes del Análisis -->
+            <div class="bg-white rounded-lg shadow p-6 mb-6">
+                <h4 class="font-bold text-lg mb-4" style="color: var(--brand);">⚠️ Desafíos Sistémicos Identificados</h4>
+
+                <div class="space-y-4">
+                    <div class="p-4 bg-red-50 border-l-4 border-red-500 rounded-r">
+                        <div class="font-semibold text-red-800">🔥 Dolor #1: Silos de Datos y Consolidación Manual</div>
+                        <p class="text-sm text-gray-700 mt-2">
+                            Casi todos los roles de análisis describen un proceso de "extraer" datos de múltiples sistemas
+                            (CMNET, Simphony, SATCOM, Excel) para luego "armar" o "consolidar" manualmente reportes.
+                            Este proceso es lento, propenso a errores y consume la mayor parte del tiempo.
+                        </p>
+                        <div class="mt-2 text-xs text-red-700 italic">
+                            "Su desafío es obtener la información necesaria y su tarea ineficiente es organizar la información" — M. Gonzales, Control
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-orange-50 border-l-4 border-orange-500 rounded-r">
+                        <div class="font-semibold text-orange-800">📋 Burocracia y Falta de Autonomía</div>
+                        <p class="text-sm text-gray-700 mt-2">
+                            Roles clave se quejan de no tener acceso directo a los sistemas.
+                            Deben "enviar mails de solicitud para cada paso a Sistemas" por no tener "control total en el sistema".
+                            El acceso a la información depende de la "disposición de las personas".
+                        </p>
+                    </div>
+
+                    <div class="p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r">
+                        <div class="font-semibold text-amber-800">🔄 Procesos Manuales y Redundantes</div>
+                        <p class="text-sm text-gray-700 mt-2">
+                            Existe un "doble registro" de datos en CMNET y luego en Excel para resúmenes de pago.
+                            Múltiples procesos (Altas/Bajas de usuarios, Viáticos, Revisión de Ventas, Aprobaciones) son totalmente manuales.
+                            Se quejan de la revisión "voucher por voucher" de formas de pago con diferencias.
+                        </p>
+                    </div>
+
+                    <div class="p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-r">
+                        <div class="font-semibold text-yellow-800">🔥 Cultura Reactiva ("Apagar Incendios")</div>
+                        <p class="text-sm text-gray-700 mt-2">
+                            Mantenimiento describe la lucha constante contra el mantenimiento reactivo, que no deja "casi nada de tiempo"
+                            para el preventivo, creando un círculo vicioso. El día es interrumpido por "temas de mantenimiento,
+                            producto, personal" que deben ser "atendidos de inmediato".
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6 Casos de Uso de IA -->
+            <div class="bg-white rounded-lg shadow p-6 mb-6">
+                <h4 class="font-bold text-lg mb-4" style="color: var(--brand);">🤖 Oportunidades de IA Generativa (6 Casos de Uso)</h4>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs font-bold">ALTA</span>
+                            <span class="font-semibold text-sm">1. Asistente de KPIs y Reportes</span>
+                        </div>
+                        <p class="text-xs text-gray-600">
+                            Gerentes usan lenguaje natural: "Genera el reporte de ventas vs. presupuesto por centro de costo".
+                            Horas reducidas a segundos.
+                        </p>
+                    </div>
+
+                    <div class="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs font-bold">MEDIA</span>
+                            <span class="font-semibold text-sm">2. Agente de Conciliación</span>
+                        </div>
+                        <p class="text-xs text-gray-600">
+                            Compara transacciones entre Simphony, SATCOM, CMNET automáticamente.
+                            Presenta solo anomalías para revisión humana.
+                        </p>
+                    </div>
+
+                    <div class="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">BAJA</span>
+                            <span class="font-semibold text-sm">3. Automatización RPA + IA</span>
+                        </div>
+                        <p class="text-xs text-gray-600">
+                            Power Automate para Viáticos, Altas/Bajas, Fondos. El Jefe de IT ya tiene las herramientas.
+                        </p>
+                    </div>
+
+                    <div class="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs font-bold">MEDIA</span>
+                            <span class="font-semibold text-sm">4. Base de Conocimiento Ops</span>
+                        </div>
+                        <p class="text-xs text-gray-600">
+                            Asistente móvil con Manuales de Operaciones. "La freidora muestra Error E-5. ¿Qué hago?"
+                        </p>
+                    </div>
+
+                    <div class="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs font-bold">MEDIA</span>
+                            <span class="font-semibold text-sm">5. Procesamiento Documentos (IDP)</span>
+                        </div>
+                        <p class="text-xs text-gray-600">
+                            Extrae datos de facturas/proformas automáticamente. Elimina el "doble registro" en Excel.
+                        </p>
+                    </div>
+
+                    <div class="p-4 border rounded-lg hover:shadow-md transition-shadow">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">BAJA</span>
+                            <span class="font-semibold text-sm">6. Asistente de Políticas</span>
+                        </div>
+                        <p class="text-xs text-gray-600">
+                            Redacción de procedimientos y políticas. "Redacta un procedimiento para Fondo a Rendir".
+                        </p>
                     </div>
                 </div>
             </div>

@@ -54,17 +54,17 @@
 
     <hr class="mt-10 border-gray-200" />
 
-    <!-- KPIs de Impacto - Updated from SQLite Dec 2025 -->
+    <!-- KPIs de Impacto - Updated from full_intelligence.db Dec 2025 V2.0 -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
       <div class="kpi p-4 bg-gray-50">
         <div class="text-xs text-gray-500 uppercase">Macroprocesos Mapeados</div>
-        <div class="text-3xl font-bold text-gray-900">28</div>
-        <div class="text-xs text-gray-500">críticos en 3 empresas</div>
+        <div class="text-3xl font-bold text-gray-900">26</div>
+        <div class="text-xs text-gray-500">únicos en 3 empresas</div>
       </div>
       <div class="kpi-danger p-4 bg-gray-50">
         <div class="text-xs text-gray-500 uppercase">Pain Points</div>
-        <div class="text-3xl font-bold text-red-600">277</div>
-        <div class="text-xs text-gray-500">fricciones identificadas</div>
+        <div class="text-3xl font-bold text-red-600">135</div>
+        <div class="text-xs text-gray-500">únicos identificados</div>
       </div>
       <div class="kpi-warning p-4 bg-gray-50">
         <div class="text-xs text-gray-500 uppercase">Entrevistas Procesadas</div>
@@ -73,7 +73,7 @@
       </div>
       <div class="kpi-success p-4 bg-gray-50">
         <div class="text-xs text-gray-500 uppercase">Datos Consolidados</div>
-        <div class="text-3xl font-bold text-emerald-600">2,748</div>
+        <div class="text-3xl font-bold text-emerald-600">2,558</div>
         <div class="text-xs text-gray-500">entidades de inteligencia extraídas</div>
       </div>
     </div>
@@ -111,7 +111,7 @@
       <p class="text-xl font-semibold text-gray-900 leading-relaxed">
         El Grupo no tiene un problema de <span class="line-through text-gray-400">falta de sistemas</span>.
         Tiene un problema de <span class="underline decoration-amber-500 decoration-4">fragmentación operativa</span>:
-        142 sistemas identificados que generan 277 fricciones, donde <strong>Excel se ha convertido
+        142 sistemas identificados que generan 135 fricciones, donde <strong>Excel se ha convertido
         en el ERP paralelo no oficial</strong> que sostiene la operación diaria.
       </p>
     </div>
@@ -204,7 +204,7 @@
           <div class="text-xs text-red-600 uppercase mb-2">Comversa & Finanzas</div>
           <p class="text-sm text-gray-700">
             El equipo financiero está atrapado en una fábrica de manufactura de reportes.
-            <strong>Luis Nogales y Juan José Castellón</strong> descargan datos de SAP, los pasan a Excel,
+            <strong>Luis Nogales y Juan José Castellón</strong> consolidan todos los reportes de otras areas y los pasan a Excel,
             limpian, reclasifican manualmente y luego <strong>Nicolás Monje los copia y pega a PowerPoint</strong>.
           </p>
           <div class="mt-3 text-xs bg-red-200 px-2 py-1 rounded">
@@ -221,7 +221,7 @@
           <p class="text-sm text-gray-700">
             Se vende por reputación y ubicación, no por sistema. <strong>No existe un CRM.</strong>
             Las cotizaciones de eventos y ventas B2B se manejan manualmente o en Excel.
-            Si un vendedor se va, se lleva su base de datos.
+            Si un vendedor se va, se lleva su base de datos. Los restaurantes no tienen acciones de generación de demanda claras.
           </p>
           <div class="mt-3 text-xs bg-amber-200 px-2 py-1 rounded">
             🎯 No hay trazabilidad de por qué se pierden ventas ni medición de conversión
@@ -236,7 +236,7 @@
           <div class="text-xs text-orange-600 uppercase mb-2">Bolivian Foods</div>
           <p class="text-sm text-gray-700">
             La operación diaria lucha contra la falta de integración y la alta rotación.
-            Existe un <strong>"doble registro" masivo</strong>: Logística ingresa datos en CMNET
+            Existe un <strong>"doble registro" masivo</strong>: Logística ingresa datos en CMNET/SAP
             y luego manualmente en Excel para Finanzas.
           </p>
           <div class="mt-3 text-xs bg-orange-200 px-2 py-1 rounded">
@@ -246,33 +246,36 @@
       </div>
     </div>
 
-    <!-- Impacto Financiero -->
+    <!-- Impacto Financiero - Basado en full_intelligence.db V2.0 -->
     <div class="mt-8 p-6 bg-gray-900 text-white rounded-lg">
       <div class="text-center mb-6">
-        <div class="text-sm uppercase tracking-widest opacity-70">El Caso de Negocio</div>
-        <div class="text-4xl font-bold mt-2">~$1,000,000 USD</div>
-        <div class="text-lg opacity-80">Impacto Anual Estimado</div>
+        <div class="text-sm uppercase tracking-widest opacity-70">El Caso de Negocio (Validado en Entrevistas)</div>
+        <div class="text-4xl font-bold mt-2">$604,600 USD</div>
+        <div class="text-lg opacity-80">Recuperación de Eficiencia Anual</div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div class="bg-white/10 p-4 rounded text-center">
-          <div class="text-2xl font-bold text-green-400">$604,600</div>
-          <div class="text-sm opacity-80">Recuperación de Eficiencia</div>
-          <div class="text-xs opacity-60 mt-1">292 oportunidades de automatización</div>
+          <div class="text-2xl font-bold text-green-400">$229,000</div>
+          <div class="text-sm opacity-80">Comversa</div>
+          <div class="text-xs opacity-60 mt-1">32 de 70 candidatos con estimación</div>
         </div>
         <div class="bg-white/10 p-4 rounded text-center">
-          <div class="text-2xl font-bold text-blue-400">$225,000+</div>
-          <div class="text-sm opacity-80">Potencial de Crecimiento</div>
-          <div class="text-xs opacity-60 mt-1">CRM, Demand Gen, Cross-selling</div>
+          <div class="text-2xl font-bold text-blue-400">$197,600</div>
+          <div class="text-sm opacity-80">Bolivian Foods</div>
+          <div class="text-xs opacity-60 mt-1">39 de 104 candidatos con estimación</div>
         </div>
         <div class="bg-white/10 p-4 rounded text-center">
-          <div class="text-2xl font-bold text-red-400">$165,000</div>
-          <div class="text-sm opacity-80">Fuga de Ingresos</div>
-          <div class="text-xs opacity-60 mt-1">Errores facturación, cotizaciones lentas</div>
+          <div class="text-2xl font-bold text-amber-400">$178,000</div>
+          <div class="text-sm opacity-80">Los Tajibos</div>
+          <div class="text-xs opacity-60 mt-1">48 de 118 candidatos con estimación</div>
         </div>
+      </div>
+      <div class="mt-4 text-center text-xs opacity-70">
+        119 candidatos de automatización con ahorro estimado validado en entrevistas. Potencial adicional por mejora de ingresos (CRM, reducción de fuga) requiere implementación para cuantificarse.
       </div>
       <div class="mt-6 text-center">
         <div class="inline-block bg-amber-500 text-gray-900 px-6 py-3 rounded-lg font-bold">
-          Inversión Fase 2: $93,998 USD → ROI: >10x en el primer año
+          Inversión Fase 2: $93,998 USD → ROI: 6.4x en el primer año
         </div>
       </div>
     </div>
@@ -298,20 +301,20 @@ flowchart TB
     subgraph LTH["🏨 LOS TAJIBOS"]
         L1["EBITDA: -$1M USD"]
         L2["84 sistemas aislados"]
-        L3["113 pain points"]
+        L3["56 pain points"]
     end
 
     subgraph BF["🍔 BOLIVIAN FOODS"]
         B1["Ingresos: $162M USD"]
         B2["40 sistemas"]
-        B3["106 pain points"]
+        B3["51 pain points"]
         B4["🔴 MÁQUINA DE CAJA"]
     end
 
     subgraph CVS["🏗️ COMVERSA"]
         C1["Green Tower: $100M bloqueado"]
         C2["18 sistemas"]
-        C3["58 pain points"]
+        C3["28 pain points"]
         C4["60-80 hrs/mes en reportes"]
     end
 
@@ -364,7 +367,7 @@ flowchart TB
           <li>• Reduce complejidad si cierra</li>
         </ul>
         <div class="mt-3 bg-amber-200 px-3 py-2 rounded text-xs text-amber-800 font-medium">
-          🔄 Subsidiado por Bolivian Foods
+          🔄 Subsidiado por Comversa
         </div>
       </div>
 
@@ -373,7 +376,7 @@ flowchart TB
           <span class="text-2xl">🏗️</span>
           <div class="font-bold text-lg text-indigo-800">COMVERSA</div>
         </div>
-        <div class="text-xs text-indigo-600 uppercase mt-2">SI DESAPARECE: SIMPLIFICA ESTRUCTURA</div>
+        <div class="text-xs text-indigo-600 uppercase mt-2">SI DESAPARECE: SE PIERDE LA FUENTE DE INGRESOS DEL GRUPO</div>
         <ul class="mt-3 text-sm text-gray-700 space-y-1">
           <li>• <strong>60-80 hrs/mes</strong> en PowerPoint</li>
           <li>• Green Tower: $100M bloqueado</li>
@@ -381,7 +384,7 @@ flowchart TB
           <li>• Reduce overhead de holding</li>
         </ul>
         <div class="mt-3 bg-indigo-200 px-3 py-2 rounded text-xs text-indigo-800 font-medium">
-          📊 Existe principalmente para Samuel
+          📊 Existe principalmente para el directorio, reportan métricas y consolidan informacion no hay estrategia
         </div>
       </div>
     </div>
@@ -391,7 +394,7 @@ flowchart TB
       <div class="flex items-center gap-3">
         <span class="text-3xl">🎯</span>
         <div>
-          <div class="font-bold text-xl text-amber-900">El Cuello de Botella Central: Samuel</div>
+          <div class="font-bold text-xl text-amber-900">El Cuello de Botella Central: La falta de independencia de las gerencias para tomar decisiones</div>
           <div class="text-sm text-amber-700 mt-1">Todas las decisiones escalan a un punto único</div>
         </div>
       </div>
@@ -543,10 +546,10 @@ flowchart TB
           </tr>
           <tr class="bg-gray-100 font-bold">
             <td class="p-3 border">TOTAL POR EMPRESA</td>
-            <td class="p-3 border text-center">113</td>
-            <td class="p-3 border text-center">106</td>
-            <td class="p-3 border text-center">58</td>
-            <td class="p-3 border text-center bg-gray-300">277</td>
+            <td class="p-3 border text-center">56</td>
+            <td class="p-3 border text-center">51</td>
+            <td class="p-3 border text-center">28</td>
+            <td class="p-3 border text-center bg-gray-300">135</td>
           </tr>
         </tbody>
       </table>
@@ -580,9 +583,9 @@ flowchart TB
         <div>
           <div class="font-semibold text-amber-800">Insight Clave</div>
           <p class="text-gray-700 mt-1">
-            <strong>Los Tajibos concentra el 41% de las fricciones (113 de 277)</strong> debido a su complejidad
+            <strong>Los Tajibos concentra el 41% de las fricciones (56 de 135)</strong> debido a su complejidad
             operativa hotelera con múltiples puntos de contacto. <strong>Bolivian Foods tiene la mayor concentración
-            en Finanzas (36 de 106 = 34%)</strong>, reflejando la complejidad de consolidar 24 restaurantes.
+            en Finanzas</strong>, reflejando la complejidad de consolidar 24 restaurantes.
             Comversa, como holding, opera con solo 18 sistemas pero absorbe pain points de consolidación del grupo.
           </p>
         </div>
@@ -1731,19 +1734,19 @@ gantt
           </li>
           <li class="flex items-start gap-2">
             <span class="text-blue-500 font-bold">•</span>
-            <span><strong>2,748 entidades</strong> de inteligencia extraídas</span>
+            <span><strong>2,558 entidades</strong> de inteligencia extraídas</span>
           </li>
           <li class="flex items-start gap-2">
             <span class="text-blue-500 font-bold">•</span>
-            <span><strong>28 macroprocesos</strong> identificados (vs 8 en paquete base)</span>
+            <span><strong>26 macroprocesos</strong> identificados (vs 8 en paquete base)</span>
           </li>
           <li class="flex items-start gap-2">
             <span class="text-blue-500 font-bold">•</span>
-            <span><strong>292 oportunidades</strong> de automatización priorizadas</span>
+            <span><strong>119 oportunidades</strong> de automatización con ahorro validado</span>
           </li>
           <li class="flex items-start gap-2">
             <span class="text-blue-500 font-bold">•</span>
-            <span><strong>~$1,000,000 USD/año</strong> impacto anual estimado</span>
+            <span><strong>$604,600 USD/año</strong> recuperación de eficiencia validada</span>
           </li>
         </ul>
       </div>
@@ -1834,7 +1837,7 @@ gantt
     <div class="mt-10 text-center text-gray-500 text-sm">
       <hr class="mb-6">
       <p>Documento preparado mediante análisis de inteligencia conversacional</p>
-      <p class="mt-1">68 entrevistas procesadas | 2,748 datos consolidados | Diciembre 2025</p>
+      <p class="mt-1">68 entrevistas procesadas | 2,558 datos consolidados | Diciembre 2025</p>
       <p class="mt-3 font-medium text-gray-700">© Comversa Intelligence Platform</p>
     </div>
   </section>

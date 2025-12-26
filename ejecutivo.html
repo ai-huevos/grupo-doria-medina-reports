@@ -326,7 +326,7 @@ flowchart TB
     BF -->|"Datos financieros + CAJA"| CVS
     CVS -->|"Paquete Directorio"| SAMUEL
 
-    BF -.->|"Subsidia operaciones"| LTH
+    CVS -.->|"Subsidia operaciones + préstamos"| LTH
 
     style SAMUEL fill:#fef3c7,stroke:#f59e0b
     style BF fill:#dcfce7,stroke:#22c55e
@@ -345,12 +345,12 @@ flowchart TB
         <div class="text-xs text-red-600 uppercase mt-2">SI DESAPARECE: SE PIERDE LA ÚNICA EMPRESA RENTABLE</div>
         <ul class="mt-3 text-sm text-gray-700 space-y-1">
           <li>• <strong>$162M USD</strong> en ingresos (95%+ del efectivo)</li>
-          <li>• Fondea operaciones de LTH y Green Tower</li>
+          <li>• Única unidad generadora de ingresos del grupo (en bolivianos)</li>
           <li>• 500+ empleos directos</li>
           <li>• Licencias BK/Subway</li>
         </ul>
         <div class="mt-3 bg-red-200 px-3 py-2 rounded text-xs text-red-800 font-medium">
-          ⚠️ Único centro de utilidades del grupo
+          ⚠️ Genera ingresos pero no financia otras unidades directamente
         </div>
       </div>
 
@@ -367,7 +367,7 @@ flowchart TB
           <li>• Reduce complejidad si cierra</li>
         </ul>
         <div class="mt-3 bg-amber-200 px-3 py-2 rounded text-xs text-amber-800 font-medium">
-          🔄 Subsidiado por Comversa
+          🔄 Subsidiado por Conversa (préstamos bancarios + absorción de pérdidas)
         </div>
       </div>
 
@@ -376,15 +376,15 @@ flowchart TB
           <span class="text-2xl">🏗️</span>
           <div class="font-bold text-lg text-indigo-800">COMVERSA</div>
         </div>
-        <div class="text-xs text-indigo-600 uppercase mt-2">SI DESAPARECE: SE PIERDE LA FUENTE DE INGRESOS DEL GRUPO</div>
+        <div class="text-xs text-indigo-600 uppercase mt-2">SUBSIDIARIA FINANCIERA DEL GRUPO</div>
         <ul class="mt-3 text-sm text-gray-700 space-y-1">
-          <li>• <strong>60-80 hrs/mes</strong> en PowerPoint</li>
+          <li>• Absorbe salarios elevados (Armando, Gonzalo)</li>
+          <li>• Gestiona préstamos bancarios cuando LTH no genera flujo</li>
+          <li>• <strong>60-80 hrs/mes</strong> en reportes al directorio</li>
           <li>• Green Tower: $100M bloqueado</li>
-          <li>• Empresas pueden reportar directamente</li>
-          <li>• Reduce overhead de holding</li>
         </ul>
         <div class="mt-3 bg-indigo-200 px-3 py-2 rounded text-xs text-indigo-800 font-medium">
-          📊 Existe principalmente para el directorio, reportan métricas y consolidan informacion no hay estrategia
+          💰 Conversa subsidia al grupo, absorbe pérdidas de otras unidades
         </div>
       </div>
     </div>
@@ -394,8 +394,8 @@ flowchart TB
       <div class="flex items-center gap-3">
         <span class="text-3xl">🎯</span>
         <div>
-          <div class="font-bold text-xl text-amber-900">El Cuello de Botella Central: La falta de independencia de las gerencias para tomar decisiones</div>
-          <div class="text-sm text-amber-700 mt-1">Todas las decisiones escalan a un punto único</div>
+          <div class="font-bold text-xl text-amber-900">El Cuello de Botella Central: Falta de autonomía operativa y seguimiento a KPIs claros</div>
+          <div class="text-sm text-amber-700 mt-1">Las gerencias no tienen métricas claras para tomar decisiones sin escalar a Samuel</div>
         </div>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
@@ -432,148 +432,132 @@ flowchart TB
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════════ -->
-  <!-- HALLAZGO 1: MAPA DE CALOR DE INEFICIENCIAS -->
+  <!-- HALLAZGO 1: TOP 10 PROBLEMAS CONSOLIDADOS DEL GRUPO -->
   <!-- ═══════════════════════════════════════════════════════════════════════ -->
   <section class="max-w-6xl mx-auto py-10 px-6 page-break">
-    <h2 class="text-2xl border-b-2 border-gray-900 pb-2">1. Mapa de Calor de Ineficiencias por Departamento</h2>
-    <p class="text-gray-600 mt-2">Concentración de pain points por área funcional y empresa</p>
+    <h2 class="text-2xl border-b-2 border-gray-900 pb-2">1. Top 10 Problemas Consolidados del Grupo</h2>
+    <p class="text-gray-600 mt-2">Principales fricciones identificadas en 68 entrevistas y 135 pain points únicos</p>
 
-    <div class="overflow-x-auto mt-6">
-      <table class="min-w-full text-sm border-collapse" id="heatMapTable">
-        <thead>
-          <tr class="bg-gray-100">
-            <th class="p-3 text-left border">
-              Área Funcional
-              <select id="departmentFilter" class="ml-2 text-xs border rounded px-2 py-1 no-print" onchange="filterHeatMap()">
-                <option value="all">Ver Todo</option>
-                <option value="finanzas">Finanzas</option>
-                <option value="operaciones">Operaciones</option>
-                <option value="comercial">Comercial</option>
-                <option value="general">General/Admin</option>
-                <option value="tecnologia">Tecnología</option>
-              </select>
-            </th>
-            <th class="p-3 text-center border">Los Tajibos<br><span class="text-xs text-gray-500">Hotel (84 sist.)</span></th>
-            <th class="p-3 text-center border">Bolivian Foods<br><span class="text-xs text-gray-500">QSR (40 sist.)</span></th>
-            <th class="p-3 text-center border">Comversa<br><span class="text-xs text-gray-500">Holding (18 sist.)</span></th>
-            <th class="p-3 text-center border bg-gray-200">Total Grupo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-category="finanzas">
-            <td class="p-3 border font-medium">Finanzas & Contabilidad</td>
-            <td class="p-3 border text-center heat-medium">12</td>
-            <td class="p-3 border text-center heat-critical font-bold">36</td>
-            <td class="p-3 border text-center heat-high">23</td>
-            <td class="p-3 border text-center bg-red-100 font-bold">71</td>
-          </tr>
-          <tr data-category="general">
-            <td class="p-3 border font-medium">General & Administración</td>
-            <td class="p-3 border text-center heat-low">6</td>
-            <td class="p-3 border text-center heat-medium">16</td>
-            <td class="p-3 border text-center heat-high">23</td>
-            <td class="p-3 border text-center bg-yellow-100 font-bold">45</td>
-          </tr>
-          <tr data-category="comercial">
-            <td class="p-3 border font-medium">Comercial & Ventas</td>
-            <td class="p-3 border text-center heat-medium">18</td>
-            <td class="p-3 border text-center heat-low">8</td>
-            <td class="p-3 border text-center heat-low">8</td>
-            <td class="p-3 border text-center bg-orange-100 font-bold">34</td>
-          </tr>
-          <tr data-category="operaciones">
-            <td class="p-3 border font-medium">Operaciones Core</td>
-            <td class="p-3 border text-center heat-medium">10</td>
-            <td class="p-3 border text-center heat-medium">18</td>
-            <td class="p-3 border text-center heat-low">0</td>
-            <td class="p-3 border text-center bg-yellow-100 font-bold">28</td>
-          </tr>
-          <tr data-category="operaciones">
-            <td class="p-3 border font-medium">Alimentos & Bebidas</td>
-            <td class="p-3 border text-center heat-medium">18</td>
-            <td class="p-3 border text-center heat-low">0</td>
-            <td class="p-3 border text-center heat-low">0</td>
-            <td class="p-3 border text-center bg-yellow-100 font-bold">18</td>
-          </tr>
-          <tr data-category="general">
-            <td class="p-3 border font-medium">Gerencia General</td>
-            <td class="p-3 border text-center heat-low">8</td>
-            <td class="p-3 border text-center heat-low">6</td>
-            <td class="p-3 border text-center heat-low">4</td>
-            <td class="p-3 border text-center bg-green-100">18</td>
-          </tr>
-          <tr data-category="operaciones">
-            <td class="p-3 border font-medium">Ingeniería & Mantenimiento</td>
-            <td class="p-3 border text-center heat-medium">14</td>
-            <td class="p-3 border text-center heat-low">0</td>
-            <td class="p-3 border text-center heat-low">0</td>
-            <td class="p-3 border text-center bg-green-100">14</td>
-          </tr>
-          <tr data-category="general">
-            <td class="p-3 border font-medium">Recursos Humanos</td>
-            <td class="p-3 border text-center heat-low">0</td>
-            <td class="p-3 border text-center heat-medium">12</td>
-            <td class="p-3 border text-center heat-low">0</td>
-            <td class="p-3 border text-center bg-green-100">12</td>
-          </tr>
-          <tr data-category="tecnologia">
-            <td class="p-3 border font-medium">Tecnología & Sistemas</td>
-            <td class="p-3 border text-center heat-low">6</td>
-            <td class="p-3 border text-center heat-low">6</td>
-            <td class="p-3 border text-center heat-low">0</td>
-            <td class="p-3 border text-center bg-green-100">12</td>
-          </tr>
-          <tr data-category="finanzas">
-            <td class="p-3 border font-medium">Control de Gestión</td>
-            <td class="p-3 border text-center heat-low">6</td>
-            <td class="p-3 border text-center heat-low">4</td>
-            <td class="p-3 border text-center heat-low">0</td>
-            <td class="p-3 border text-center bg-green-100">10</td>
-          </tr>
-          <tr data-category="operaciones">
-            <td class="p-3 border font-medium">Recepción & Hospedaje</td>
-            <td class="p-3 border text-center heat-low">8</td>
-            <td class="p-3 border text-center heat-low">0</td>
-            <td class="p-3 border text-center heat-low">0</td>
-            <td class="p-3 border text-center bg-green-100">8</td>
-          </tr>
-          <tr data-category="operaciones">
-            <td class="p-3 border font-medium">Centro de Convenciones</td>
-            <td class="p-3 border text-center heat-low">7</td>
-            <td class="p-3 border text-center heat-low">0</td>
-            <td class="p-3 border text-center heat-low">0</td>
-            <td class="p-3 border text-center bg-green-100">7</td>
-          </tr>
-          <tr class="bg-gray-100 font-bold">
-            <td class="p-3 border">TOTAL POR EMPRESA</td>
-            <td class="p-3 border text-center">56</td>
-            <td class="p-3 border text-center">51</td>
-            <td class="p-3 border text-center">28</td>
-            <td class="p-3 border text-center bg-gray-300">135</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="mt-6 space-y-4">
+      <!-- Problema 1 -->
+      <div class="p-4 border-l-4 border-red-500 bg-red-50 rounded-r-lg">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">1</span>
+            <span class="font-bold ml-2">Conciliaciones manuales entre sistemas (2-4 hrs/día)</span>
+          </div>
+          <span class="text-xs text-red-600 font-medium">CRÍTICO</span>
+        </div>
+        <p class="text-sm text-gray-700 mt-2">Opera, SAP, Satcom, CMNET, Simphony no se comunican. El personal hace "puente humano" entre sistemas, re-digitando datos constantemente.</p>
+      </div>
 
-    <script>
-      function filterHeatMap() {
-        const filter = document.getElementById('departmentFilter').value;
-        const rows = document.querySelectorAll('#heatMapTable tbody tr[data-category]');
-        rows.forEach(row => {
-          if (filter === 'all' || row.dataset.category === filter) {
-            row.style.display = '';
-          } else {
-            row.style.display = 'none';
-          }
-        });
-      }
-    </script>
+      <!-- Problema 2 -->
+      <div class="p-4 border-l-4 border-red-500 bg-red-50 rounded-r-lg">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">2</span>
+            <span class="font-bold ml-2">Excel como ERP paralelo no oficial</span>
+          </div>
+          <span class="text-xs text-red-600 font-medium">CRÍTICO</span>
+        </div>
+        <p class="text-sm text-gray-700 mt-2">100+ flujos de datos críticos pasan por hojas de cálculo. Si un archivo se corrompe, la operación se detiene. El 80% del tiempo de Finanzas es "limpiar datos".</p>
+      </div>
 
-    <div class="flex gap-4 mt-4 text-xs">
-      <div class="flex items-center gap-2"><div class="w-4 h-4 heat-critical"></div> Crítico (>30)</div>
-      <div class="flex items-center gap-2"><div class="w-4 h-4 heat-high"></div> Alto (20-30)</div>
-      <div class="flex items-center gap-2"><div class="w-4 h-4 heat-medium"></div> Medio (10-19)</div>
-      <div class="flex items-center gap-2"><div class="w-4 h-4 heat-low"></div> Bajo (<10)</div>
+      <!-- Problema 3 -->
+      <div class="p-4 border-l-4 border-red-500 bg-red-50 rounded-r-lg">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">3</span>
+            <span class="font-bold ml-2">Ausencia total de CRM en las 3 empresas</span>
+          </div>
+          <span class="text-xs text-red-600 font-medium">CRÍTICO</span>
+        </div>
+        <p class="text-sm text-gray-700 mt-2">Cero trazabilidad de cotizaciones y conversión comercial. No se sabe por qué se pierden ventas ni cuánto revenue se fuga. Si un vendedor se va, se lleva su base de datos.</p>
+      </div>
+
+      <!-- Problema 4 -->
+      <div class="p-4 border-l-4 border-orange-500 bg-orange-50 rounded-r-lg">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">4</span>
+            <span class="font-bold ml-2">Reportería ejecutiva manual (60-80 hrs/mes)</span>
+          </div>
+          <span class="text-xs text-orange-600 font-medium">ALTO</span>
+        </div>
+        <p class="text-sm text-gray-700 mt-2">Consolidación manual de datos de 3 empresas, limpieza en Excel, y copia/pega a PowerPoint. Talento con skills en R, SQL y PowerBI subutilizado en "conserjería de datos".</p>
+      </div>
+
+      <!-- Problema 5 -->
+      <div class="p-4 border-l-4 border-orange-500 bg-orange-50 rounded-r-lg">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">5</span>
+            <span class="font-bold ml-2">Control de stock en hojas de cálculo</span>
+          </div>
+          <span class="text-xs text-orange-600 font-medium">ALTO</span>
+        </div>
+        <p class="text-sm text-gray-700 mt-2">Sin alertas automáticas de stock mínimo, reconciliación manual constante. Todos los gerentes de restaurantes piden: "costo real al instante + nivel de inventario".</p>
+      </div>
+
+      <!-- Problema 6 -->
+      <div class="p-4 border-l-4 border-orange-500 bg-orange-50 rounded-r-lg">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded">6</span>
+            <span class="font-bold ml-2">Conocimiento crítico sin documentar (73%)</span>
+          </div>
+          <span class="text-xs text-orange-600 font-medium">ALTO</span>
+        </div>
+        <p class="text-sm text-gray-700 mt-2">Los procesos más críticos (cierre contable, costo de ventas, importaciones) viven en la cabeza de pocas personas sin respaldo ni documentación formal.</p>
+      </div>
+
+      <!-- Problema 7 -->
+      <div class="p-4 border-l-4 border-yellow-500 bg-yellow-50 rounded-r-lg">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded">7</span>
+            <span class="font-bold ml-2">Mantenimiento reactivo sin sistema CMMS</span>
+          </div>
+          <span class="text-xs text-yellow-600 font-medium">MEDIO</span>
+        </div>
+        <p class="text-sm text-gray-700 mt-2">Órdenes de trabajo en Excel y WhatsApp. El equipo vive en ciclo de "bomberazos" sin tiempo para mantenimiento preventivo.</p>
+      </div>
+
+      <!-- Problema 8 -->
+      <div class="p-4 border-l-4 border-yellow-500 bg-yellow-50 rounded-r-lg">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded">8</span>
+            <span class="font-bold ml-2">Aprobaciones que escalan innecesariamente</span>
+          </div>
+          <span class="text-xs text-yellow-600 font-medium">MEDIO</span>
+        </div>
+        <p class="text-sm text-gray-700 mt-2">Pagos a proveedores tardan 10-14 días, cambios de precio 3-7 días. 15-25 decisiones esperando en cola constantemente.</p>
+      </div>
+
+      <!-- Problema 9 -->
+      <div class="p-4 border-l-4 border-yellow-500 bg-yellow-50 rounded-r-lg">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded">9</span>
+            <span class="font-bold ml-2">WhatsApp como sistema operativo real</span>
+          </div>
+          <span class="text-xs text-yellow-600 font-medium">MEDIO</span>
+        </div>
+        <p class="text-sm text-gray-700 mt-2">10+ workflows críticos sin pista de auditoría. Coordinación operativa diaria sin trazabilidad ni métricas.</p>
+      </div>
+
+      <!-- Problema 10 -->
+      <div class="p-4 border-l-4 border-yellow-500 bg-yellow-50 rounded-r-lg">
+        <div class="flex justify-between items-start">
+          <div>
+            <span class="bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded">10</span>
+            <span class="font-bold ml-2">Decisiones sobre datos desactualizados</span>
+          </div>
+          <span class="text-xs text-yellow-600 font-medium">MEDIO</span>
+        </div>
+        <p class="text-sm text-gray-700 mt-2">Estados de resultados con días o semanas de antigüedad. No hay visibilidad en tiempo real del desempeño del negocio.</p>
+      </div>
     </div>
 
     <!-- Insight -->
@@ -581,12 +565,11 @@ flowchart TB
       <div class="flex items-start gap-3">
         <span class="text-2xl">💡</span>
         <div>
-          <div class="font-semibold text-amber-800">Insight Clave</div>
+          <div class="font-semibold text-amber-800">Patrón Común</div>
           <p class="text-gray-700 mt-1">
-            <strong>Los Tajibos concentra el 41% de las fricciones (56 de 135)</strong> debido a su complejidad
-            operativa hotelera con múltiples puntos de contacto. <strong>Bolivian Foods tiene la mayor concentración
-            en Finanzas</strong>, reflejando la complejidad de consolidar 24 restaurantes.
-            Comversa, como holding, opera con solo 18 sistemas pero absorbe pain points de consolidación del grupo.
+            Los 10 problemas principales comparten una raíz: <strong>sistemas que no se comunican</strong> y
+            <strong>personas actuando como "traductores"</strong> entre ellos. La solución no es más sistemas,
+            sino <strong>integración y automatización</strong> de los existentes.
           </p>
         </div>
       </div>
@@ -594,80 +577,80 @@ flowchart TB
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════════ -->
-  <!-- HALLAZGO 2: CUELLOS DE BOTELLA POR PERSONA -->
+  <!-- HALLAZGO 2: CONCENTRACIÓN DE RIESGO POR ROL -->
   <!-- ═══════════════════════════════════════════════════════════════════════ -->
   <section class="max-w-6xl mx-auto py-10 px-6 page-break">
-    <h2 class="text-2xl border-b-2 border-gray-900 pb-2">2. Cuellos de Botella: Personas y Sistemas Críticos</h2>
-    <p class="text-gray-600 mt-2">Concentración de dependencias en actores específicos</p>
+    <h2 class="text-2xl border-b-2 border-gray-900 pb-2">2. Concentración de Riesgo: Roles y Sistemas Críticos</h2>
+    <p class="text-gray-600 mt-2">Análisis de dependencias sistémicas — el problema no son las personas, es la falta de respaldos y capacitación cruzada</p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
       <!-- Chart: Dependencia por Rol -->
       <div>
-        <h3 class="text-lg font-semibold mb-4">Carga de Procesos por Rol</h3>
+        <h3 class="text-lg font-semibold mb-4">Carga de Procesos por Área Funcional</h3>
         <canvas id="bottleneckChart"></canvas>
       </div>
 
-      <!-- Tabla de Personas Críticas -->
+      <!-- Tabla de Roles Críticos -->
       <div>
-        <h3 class="text-lg font-semibold mb-4">Top 10 Personas con Mayor Carga</h3>
+        <h3 class="text-lg font-semibold mb-4">Roles con Mayor Concentración de Riesgo</h3>
         <table class="w-full text-sm">
           <thead>
             <tr class="border-b-2 border-gray-300">
-              <th class="py-2 text-left">Persona / Rol</th>
+              <th class="py-2 text-left">Rol / Función</th>
               <th class="py-2 text-center">Empresa</th>
-              <th class="py-2 text-center">Riesgo</th>
+              <th class="py-2 text-center">Impacto si falla</th>
             </tr>
           </thead>
           <tbody>
             <tr class="border-b">
-              <td class="py-2"><strong>Carlos Camacho</strong><br><span class="text-gray-500 text-xs">Gerente Nacional Operaciones</span></td>
+              <td class="py-2"><strong>Gerente Nacional Operaciones</strong><br><span class="text-gray-500 text-xs">Coordinación de 24 restaurantes</span></td>
               <td class="py-2 text-center text-xs">BF</td>
-              <td class="py-2 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">CRÍTICO</span></td>
+              <td class="py-2 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">Operación paralizada</span></td>
             </tr>
             <tr class="border-b">
-              <td class="py-2"><strong>Sissy Fernández</strong><br><span class="text-gray-500 text-xs">Supervisor Contabilidad</span></td>
+              <td class="py-2"><strong>Supervisor Contabilidad</strong><br><span class="text-gray-500 text-xs">Proceso de cierre contable</span></td>
               <td class="py-2 text-center text-xs">BF</td>
-              <td class="py-2 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">CRÍTICO</span></td>
+              <td class="py-2 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">Sin cierre mensual</span></td>
             </tr>
             <tr class="border-b">
-              <td class="py-2"><strong>Álvaro Coila</strong><br><span class="text-gray-500 text-xs">Jefe Nacional de Sistemas</span></td>
+              <td class="py-2"><strong>Jefe Nacional de Sistemas</strong><br><span class="text-gray-500 text-xs">Todas las integraciones técnicas</span></td>
               <td class="py-2 text-center text-xs">BF</td>
-              <td class="py-2 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">CRÍTICO</span></td>
+              <td class="py-2 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">Sistemas sin soporte</span></td>
             </tr>
             <tr class="border-b">
-              <td class="py-2"><strong>Pavel Arias</strong><br><span class="text-gray-500 text-xs">Gerente de Informática</span></td>
+              <td class="py-2"><strong>Gerente de Informática</strong><br><span class="text-gray-500 text-xs">Integraciones Opera/Marriott</span></td>
               <td class="py-2 text-center text-xs">LTH</td>
-              <td class="py-2 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">CRÍTICO</span></td>
+              <td class="py-2 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">Hotel desconectado</span></td>
             </tr>
             <tr class="border-b">
-              <td class="py-2"><strong>Nicolas Monje</strong><br><span class="text-gray-500 text-xs">Desarrollo TI</span></td>
+              <td class="py-2"><strong>Desarrollo TI</strong><br><span class="text-gray-500 text-xs">Única capacidad de desarrollo</span></td>
               <td class="py-2 text-center text-xs">CVS</td>
-              <td class="py-2 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">CRÍTICO</span></td>
+              <td class="py-2 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">Sin innovación digital</span></td>
             </tr>
             <tr class="border-b">
-              <td class="py-2"><strong>Fridda Roca</strong><br><span class="text-gray-500 text-xs">Directora Centro Convenciones</span></td>
+              <td class="py-2"><strong>Directora Centro Convenciones</strong><br><span class="text-gray-500 text-xs">Eventos y ventas B2B</span></td>
               <td class="py-2 text-center text-xs">LTH</td>
-              <td class="py-2 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">ALTO</span></td>
+              <td class="py-2 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Eventos sin gestión</span></td>
             </tr>
             <tr class="border-b">
-              <td class="py-2"><strong>Micaela Gonzales</strong><br><span class="text-gray-500 text-xs">Coordinadora Control Gestión</span></td>
+              <td class="py-2"><strong>Coordinadora Control Gestión</strong><br><span class="text-gray-500 text-xs">KPIs y reportería</span></td>
               <td class="py-2 text-center text-xs">BF</td>
-              <td class="py-2 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">ALTO</span></td>
+              <td class="py-2 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Sin métricas</span></td>
             </tr>
             <tr class="border-b">
-              <td class="py-2"><strong>Luis Nogales</strong><br><span class="text-gray-500 text-xs">Jefe Finanzas y Proyectos</span></td>
+              <td class="py-2"><strong>Jefe Finanzas y Proyectos</strong><br><span class="text-gray-500 text-xs">Consolidación financiera</span></td>
               <td class="py-2 text-center text-xs">CVS</td>
-              <td class="py-2 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">ALTO</span></td>
+              <td class="py-2 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Sin reportes grupo</span></td>
             </tr>
             <tr class="border-b">
-              <td class="py-2"><strong>Javier Ferrufino</strong><br><span class="text-gray-500 text-xs">Gerente de Ingeniería</span></td>
+              <td class="py-2"><strong>Gerente de Ingeniería</strong><br><span class="text-gray-500 text-xs">Mantenimiento hotel</span></td>
               <td class="py-2 text-center text-xs">LTH</td>
-              <td class="py-2 text-center"><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs">MEDIO</span></td>
+              <td class="py-2 text-center"><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs">Mantenimiento sin líder</span></td>
             </tr>
             <tr>
-              <td class="py-2"><strong>Diego Alcántara</strong><br><span class="text-gray-500 text-xs">Chef Ejecutivo</span></td>
+              <td class="py-2"><strong>Chef Ejecutivo</strong><br><span class="text-gray-500 text-xs">Recetas y costos</span></td>
               <td class="py-2 text-center text-xs">LTH</td>
-              <td class="py-2 text-center"><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs">MEDIO</span></td>
+              <td class="py-2 text-center"><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs">Sin estándares A&B</span></td>
             </tr>
           </tbody>
         </table>
@@ -709,19 +692,19 @@ flowchart TB
       <div class="flex items-start gap-3">
         <span class="text-2xl">⚠️</span>
         <div>
-          <div class="font-semibold text-amber-800">Riesgo de Continuidad - Puntos Únicos de Falla</div>
+          <div class="font-semibold text-amber-800">Riesgo de Continuidad — El Problema Sistémico</div>
           <p class="text-gray-700 mt-1">
-            <strong>5 personas críticas concentran conocimiento no documentado:</strong>
+            <strong>Las personas identificadas no son el problema — el problema es la falta de respaldos y capacitación cruzada:</strong>
           </p>
           <ul class="text-gray-700 mt-2 text-sm space-y-1">
-            <li>• <strong>Sissy Fernández (BF)</strong>: Único conocimiento del proceso completo de cierre contable</li>
-            <li>• <strong>Álvaro Coila (BF)</strong>: Todas las integraciones de sistemas y conocimiento técnico</li>
-            <li>• <strong>Pavel Arias (LTH)</strong>: Conocimiento de todas las integraciones Opera/Marriott</li>
-            <li>• <strong>Nicolas Monje (CVS)</strong>: Todo el desarrollo custom y capacidad digital del grupo</li>
-            <li>• <strong>Micaela Gonzales (BF)</strong>: Todo el conocimiento de KPIs y control de gestión</li>
+            <li>• <strong>Proceso de cierre contable (BF)</strong>: Sin documentación, depende de una sola persona</li>
+            <li>• <strong>Integraciones de sistemas (BF)</strong>: Todo el conocimiento técnico concentrado en un rol</li>
+            <li>• <strong>Integraciones Opera/Marriott (LTH)</strong>: Sin backup para configuraciones críticas</li>
+            <li>• <strong>Desarrollo y capacidad digital (CVS)</strong>: Única persona con skills de desarrollo en el grupo</li>
+            <li>• <strong>KPIs y control de gestión (BF)</strong>: Fórmulas y criterios sin documentar</li>
           </ul>
           <p class="text-gray-700 mt-2 text-sm">
-            Si cualquiera de estas personas se ausenta, se detienen procesos críticos. No existe documentación ni respaldo formal.
+            <strong>Solución:</strong> Documentación de procesos críticos + capacitación cruzada + sistemas que no dependan de conocimiento individual.
           </p>
         </div>
       </div>
@@ -879,7 +862,7 @@ flowchart TB
       </div>
       <div class="p-4 bg-amber-50 border-l-4 border-amber-500">
         <div class="text-xs text-gray-500 uppercase">Tipo Principal</div>
-        <div class="text-xl font-bold text-amber-600">Velocity vs Quality</div>
+        <div class="text-xl font-bold text-amber-600">Velocidad vs Calidad</div>
         <div class="text-xs text-gray-500">desalineación organizacional</div>
       </div>
     </div>
@@ -936,7 +919,7 @@ flowchart TB
 
     <!-- Ejemplo de Conflicto Crítico -->
     <div class="mt-8 p-5 bg-red-50 border border-red-200 rounded-lg">
-      <div class="font-semibold text-red-800 mb-3">🔴 Ejemplo de Conflicto Crítico: Velocity vs Quality</div>
+      <div class="font-semibold text-red-800 mb-3">🔴 Ejemplo de Conflicto Crítico: Velocidad vs Calidad</div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="bg-white p-4 rounded">
           <div class="text-xs text-gray-500 uppercase">Contabilidad (Bolivian Foods)</div>
@@ -964,10 +947,10 @@ flowchart TB
       <div class="flex items-start gap-3">
         <span class="text-2xl">⚖️</span>
         <div>
-          <div class="font-semibold text-amber-800">Features vs Bugs en Conflictos</div>
+          <div class="font-semibold text-amber-800">Características Intencionales vs Errores en Conflictos</div>
           <p class="text-gray-700 mt-1">
-            <strong>Algunos conflictos son intencionales (trade-offs estratégicos)</strong> — como Margin vs Quality entre Gerencia y Ventas.
-            <strong>Pero 58 conflictos son "bugs organizacionales"</strong> — desalineación que genera fricción innecesaria.
+            <strong>Algunos conflictos son intencionales (compensaciones estratégicas)</strong> — como Margen vs Calidad entre Gerencia y Ventas.
+            <strong>Pero 58 conflictos son "errores organizacionales"</strong> — desalineación que genera fricción innecesaria.
             La solución: definir KPIs compartidos entre unidades relacionadas y establecer foros de coordinación.
           </p>
         </div>
@@ -981,28 +964,6 @@ flowchart TB
   <section class="max-w-6xl mx-auto py-10 px-6 page-break">
     <h2 class="text-2xl border-b-2 border-gray-900 pb-2">3C. Duplicación Organizacional: Lo Que Se Hace 3 Veces</h2>
     <p class="text-gray-600 mt-2">Funciones idénticas ejecutadas por múltiples equipos sin sinergia</p>
-
-    <!-- Impacto Total -->
-    <div class="mt-6 p-6 bg-gradient-to-r from-red-500 to-amber-500 text-white rounded-lg">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-        <div>
-          <div class="text-3xl font-bold">$885K - $1.54M</div>
-          <div class="text-sm opacity-90">USD/año en ineficiencias</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold">89</div>
-          <div class="text-sm opacity-90">procesos duplicados 3x</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold">15-21</div>
-          <div class="text-sm opacity-90">FTEs en Finanzas (reducible a 8-10)</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold">142</div>
-          <div class="text-sm opacity-90">sistemas para 3 empresas</div>
-        </div>
-      </div>
-    </div>
 
     <!-- Top 10 Duplicaciones -->
     <div class="mt-8">
@@ -1056,14 +1017,14 @@ flowchart TB
             </tr>
             <tr class="border-b bg-yellow-50">
               <td class="p-3">6</td>
-              <td class="p-3 font-medium">TI Fragmentado (3 equipos)</td>
+              <td class="p-3 font-medium">Soporte TI sin sinergia</td>
               <td class="p-3 text-center">2/3</td>
               <td class="p-3 text-right font-bold text-yellow-600">$60-100K</td>
               <td class="p-3 text-center"><span class="bg-yellow-100 px-2 py-1 rounded text-xs">Media</span></td>
             </tr>
             <tr class="border-b bg-yellow-50">
               <td class="p-3">7</td>
-              <td class="p-3 font-medium">HR Duplicado (2 Directoras)</td>
+              <td class="p-3 font-medium">Procesos RRHH separados</td>
               <td class="p-3 text-center">2/3</td>
               <td class="p-3 text-right font-bold text-yellow-600">$40-50K</td>
               <td class="p-3 text-center"><span class="bg-yellow-100 px-2 py-1 rounded text-xs">Media</span></td>
@@ -1094,39 +1055,36 @@ flowchart TB
       </div>
     </div>
 
-    <!-- La Verdad Incómoda -->
-    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="p-5 bg-red-50 rounded-lg border border-red-200">
-        <div class="font-semibold text-red-800 mb-3">🔴 Duplicación por "Turf Wars"</div>
+    <!-- Duplicación en Sistemas y Procesos (Solucionable) -->
+    <div class="mt-8 p-5 bg-green-50 rounded-lg border border-green-200">
+      <div class="font-semibold text-green-800 mb-3">🟢 Duplicación en Sistemas y Procesos (Solucionable con Integración)</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <ul class="text-sm text-gray-700 space-y-2">
           <li class="flex items-start gap-2">
-            <span class="text-red-500">●</span>
-            <span><strong>2 Directoras de Gestión Humana</strong> — sin razón técnica</span>
+            <span class="text-green-500">●</span>
+            <span><strong>Reportes ejecutivos manuales</strong> — cada empresa genera los suyos sin integración</span>
           </li>
           <li class="flex items-start gap-2">
-            <span class="text-red-500">●</span>
-            <span><strong>3 procesos de Presupuesto</strong> — cada gerente protege "su" presupuesto</span>
+            <span class="text-green-500">●</span>
+            <span><strong>Ausencia de CRM</strong> — 3 empresas sin gestión comercial unificada</span>
           </li>
           <li class="flex items-start gap-2">
-            <span class="text-red-500">●</span>
-            <span><strong>IT separado por empresa</strong> — LTH tiene más recursos, no quiere compartir</span>
+            <span class="text-green-500">●</span>
+            <span><strong>Control de inventario en Excel</strong> — reconciliación manual en cada punto</span>
           </li>
         </ul>
-      </div>
-      <div class="p-5 bg-green-50 rounded-lg border border-green-200">
-        <div class="font-semibold text-green-800 mb-3">🟢 Duplicación Técnica (Solucionable)</div>
         <ul class="text-sm text-gray-700 space-y-2">
           <li class="flex items-start gap-2">
             <span class="text-green-500">●</span>
-            <span><strong>Reportes manuales</strong> — falta integración de sistemas</span>
+            <span><strong>Compras sin negociación conjunta</strong> — pérdida de poder de negociación</span>
           </li>
           <li class="flex items-start gap-2">
             <span class="text-green-500">●</span>
-            <span><strong>Sin CRM</strong> — nadie lo ha priorizado</span>
+            <span><strong>Conciliaciones manuales</strong> — cada sistema opera como isla</span>
           </li>
           <li class="flex items-start gap-2">
             <span class="text-green-500">●</span>
-            <span><strong>Compras no centralizadas</strong> — podrían negociar juntos</span>
+            <span><strong>Service Desk separado</strong> — 3 puntos de soporte sin sinergia</span>
           </li>
         </ul>
       </div>
@@ -1185,7 +1143,7 @@ flowchart TB
         <table class="min-w-full text-sm">
           <thead class="bg-gray-800 text-white">
             <tr>
-              <th class="p-3 text-left">SPOF</th>
+              <th class="p-3 text-left">Punto Único de Falla</th>
               <th class="p-3 text-left">Ubicación</th>
               <th class="p-3 text-left">Impacto Si Falla</th>
               <th class="p-3 text-left">Mitigación Propuesta</th>
@@ -1193,46 +1151,46 @@ flowchart TB
           </thead>
           <tbody>
             <tr class="border-b bg-red-50">
-              <td class="p-3 font-bold text-red-700">🔴 Samuel</td>
-              <td class="p-3">Hub de decisiones</td>
+              <td class="p-3 font-bold text-red-700">🔴 Hub de Decisiones Central</td>
+              <td class="p-3">Nivel ejecutivo</td>
               <td class="p-3">TODAS las decisiones se detienen</td>
-              <td class="p-3">Matriz de autoridad con límites claros</td>
+              <td class="p-3">Matriz de autoridad con límites claros por nivel</td>
             </tr>
             <tr class="border-b bg-red-50">
               <td class="p-3 font-bold text-red-700">🔴 Bolivian Foods</td>
-              <td class="p-3">Fuente de caja</td>
-              <td class="p-3">El grupo muere</td>
-              <td class="p-3">Proteger a toda costa</td>
+              <td class="p-3">Única fuente de caja</td>
+              <td class="p-3">El grupo entero se detiene</td>
+              <td class="p-3">Proteger operación y márgenes a toda costa</td>
             </tr>
             <tr class="border-b bg-red-50">
-              <td class="p-3 font-bold text-red-700">🔴 Nicolas Monje</td>
-              <td class="p-3">Desarrollo (Comversa)</td>
-              <td class="p-3">Sin nueva capacidad digital</td>
+              <td class="p-3 font-bold text-red-700">🔴 Rol de Desarrollo TI</td>
+              <td class="p-3">Comversa</td>
+              <td class="p-3">Sin capacidad de innovación digital</td>
               <td class="p-3">Cross-train o contratar backup</td>
             </tr>
             <tr class="border-b bg-red-50">
-              <td class="p-3 font-bold text-red-700">🔴 Sissy (BF)</td>
-              <td class="p-3">Proceso de cierre</td>
+              <td class="p-3 font-bold text-red-700">🔴 Rol de Cierre Contable</td>
+              <td class="p-3">Bolivian Foods</td>
               <td class="p-3">BF no puede cerrar libros</td>
-              <td class="p-3">Documentar proceso completo</td>
+              <td class="p-3">Documentar proceso completo + backup</td>
             </tr>
             <tr class="border-b bg-red-50">
-              <td class="p-3 font-bold text-red-700">🔴 Pavel (LTH)</td>
-              <td class="p-3">Integraciones TI</td>
+              <td class="p-3 font-bold text-red-700">🔴 Rol de Integraciones TI</td>
+              <td class="p-3">Los Tajibos</td>
               <td class="p-3">Sistemas del hotel fallan</td>
               <td class="p-3">Documentar y cross-train</td>
             </tr>
             <tr class="border-b bg-red-50">
-              <td class="p-3 font-bold text-red-700">🔴 Excel</td>
-              <td class="p-3">Capa de integración</td>
+              <td class="p-3 font-bold text-red-700">🔴 Excel como ERP</td>
+              <td class="p-3">Todo el grupo</td>
               <td class="p-3">TODA la reportería se rompe</td>
               <td class="p-3">Reemplazar con DW centralizado</td>
             </tr>
             <tr class="bg-orange-50">
-              <td class="p-3 font-bold text-orange-700">🟠 WhatsApp</td>
-              <td class="p-3">Operaciones reales</td>
+              <td class="p-3 font-bold text-orange-700">🟠 WhatsApp como sistema operativo</td>
+              <td class="p-3">Operaciones diarias</td>
               <td class="p-3">Caos de coordinación</td>
-              <td class="p-3">Formalizar o implementar auditoría</td>
+              <td class="p-3">Formalizar workflows con auditoría</td>
             </tr>
           </tbody>
         </table>
@@ -1241,100 +1199,40 @@ flowchart TB
 
     <!-- Dependencias Ocultas -->
     <div class="mt-8 p-5 bg-gray-100 rounded-lg">
-      <div class="font-semibold text-gray-800 mb-4">🕵️ Dependencias Ocultas de las que Nadie Habla</div>
+      <div class="font-semibold text-gray-800 mb-4">🕵️ Dependencias Sistémicas Críticas</div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="bg-white p-4 rounded border-l-4 border-red-500">
-          <div class="font-medium">BF subsidia operaciones de LTH</div>
-          <div class="text-sm text-gray-600 mt-1">Caja de BF cubre pérdidas de LTH</div>
-          <div class="text-xs text-red-600 mt-2">⚠️ Si BF lucha, LTH cierra</div>
+          <div class="font-medium">Conversa subsidia operaciones de LTH</div>
+          <div class="text-sm text-gray-600 mt-1">Absorbe pérdidas y gestiona préstamos bancarios cuando LTH no genera flujo</div>
+          <div class="text-xs text-red-600 mt-2">⚠️ Si Conversa no puede seguir absorbiendo, LTH cierra</div>
         </div>
         <div class="bg-white p-4 rounded border-l-4 border-red-500">
           <div class="font-medium">Excel es el ERP real</div>
-          <div class="text-sm text-gray-600 mt-1">100+ flujos de datos pasan por Excel</div>
-          <div class="text-xs text-red-600 mt-2">⚠️ Un archivo corrupto = caos</div>
+          <div class="text-sm text-gray-600 mt-1">100+ flujos de datos pasan por hojas de cálculo</div>
+          <div class="text-xs text-red-600 mt-2">⚠️ Un archivo corrupto = caos operativo</div>
         </div>
         <div class="bg-white p-4 rounded border-l-4 border-red-500">
-          <div class="font-medium">WhatsApp es el sistema de ops real</div>
-          <div class="text-sm text-gray-600 mt-1">10+ workflows críticos sin auditoría</div>
-          <div class="text-xs text-red-600 mt-2">⚠️ Cero pista de auditoría</div>
+          <div class="font-medium">WhatsApp es el sistema de operaciones</div>
+          <div class="text-sm text-gray-600 mt-1">10+ workflows críticos sin auditoría ni métricas</div>
+          <div class="text-xs text-red-600 mt-2">⚠️ Cero pista de auditoría ni trazabilidad</div>
         </div>
         <div class="bg-white p-4 rounded border-l-4 border-amber-500">
-          <div class="font-medium">Comversa existe para Samuel</div>
-          <div class="text-sm text-gray-600 mt-1">60-80 hrs/mes de PowerPoint</div>
-          <div class="text-xs text-amber-600 mt-2">🔄 Podría eliminarse/simplificarse</div>
+          <div class="font-medium">BF genera ingresos, Conversa absorbe costos</div>
+          <div class="text-sm text-gray-600 mt-1">Bolivian Foods es la única fuente de ingresos en bolivianos</div>
+          <div class="text-xs text-amber-600 mt-2">🔄 Estructura financiera requiere claridad</div>
         </div>
       </div>
-    </div>
-
-    <!-- Matriz de Redundancia -->
-    <div class="mt-8">
-      <h3 class="font-semibold text-lg mb-4">Análisis de Redundancia: ¿Qué Está Replicado?</h3>
-      <table class="min-w-full text-sm">
-        <thead class="bg-gray-100">
-          <tr>
-            <th class="p-3 text-left">Capacidad</th>
-            <th class="p-3 text-center">LTH</th>
-            <th class="p-3 text-center">BF</th>
-            <th class="p-3 text-center">CVS</th>
-            <th class="p-3 text-center">Redundancia</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="border-b">
-            <td class="p-3">Reportería Financiera</td>
-            <td class="p-3 text-center text-green-600">✅</td>
-            <td class="p-3 text-center text-green-600">✅</td>
-            <td class="p-3 text-center text-green-600">✅</td>
-            <td class="p-3 text-center"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">3x ✓</span></td>
-          </tr>
-          <tr class="border-b">
-            <td class="p-3">Soporte TI</td>
-            <td class="p-3 text-center text-green-600">✅ Pavel</td>
-            <td class="p-3 text-center text-green-600">✅ Álvaro</td>
-            <td class="p-3 text-center text-green-600">✅ Nicolas</td>
-            <td class="p-3 text-center"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">3x ✓</span></td>
-          </tr>
-          <tr class="border-b">
-            <td class="p-3">Gestión de RRHH</td>
-            <td class="p-3 text-center text-green-600">✅</td>
-            <td class="p-3 text-center text-green-600">✅</td>
-            <td class="p-3 text-center text-green-600">✅</td>
-            <td class="p-3 text-center"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">3x ✓</span></td>
-          </tr>
-          <tr class="border-b bg-red-50">
-            <td class="p-3 font-medium">Planificación Estratégica</td>
-            <td class="p-3 text-center text-red-600">❌ Escala a Samuel</td>
-            <td class="p-3 text-center text-red-600">❌ Escala a Samuel</td>
-            <td class="p-3 text-center text-red-600">❌ Escala a Samuel</td>
-            <td class="p-3 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs font-bold">0x SPOF</span></td>
-          </tr>
-          <tr class="border-b bg-orange-50">
-            <td class="p-3 font-medium">Reportería al Directorio</td>
-            <td class="p-3 text-center text-red-600">❌</td>
-            <td class="p-3 text-center text-red-600">❌</td>
-            <td class="p-3 text-center text-green-600">✅</td>
-            <td class="p-3 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs font-bold">1x solo</span></td>
-          </tr>
-          <tr class="bg-orange-50">
-            <td class="p-3 font-medium">Capacidad de Desarrollo</td>
-            <td class="p-3 text-center text-red-600">❌</td>
-            <td class="p-3 text-center text-red-600">❌</td>
-            <td class="p-3 text-center text-green-600">✅ Nicolas</td>
-            <td class="p-3 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs font-bold">1x solo</span></td>
-          </tr>
-        </tbody>
-      </table>
     </div>
 
     <div class="contrarian p-5 mt-6">
       <div class="flex items-start gap-3">
         <span class="text-2xl">💡</span>
         <div>
-          <div class="font-semibold text-amber-800">Descubrimiento Crítico</div>
+          <div class="font-semibold text-amber-800">Implicación Clave</div>
           <p class="text-gray-700 mt-1">
-            La única capacidad verdaderamente compartida es <strong>reportería consolidada</strong> y <strong>desarrollo</strong>.
-            Todo lo demás está replicado 3x — generando costo sin sinergia.
-            El único punto de integración real es <strong>Samuel</strong>, quien se convierte en cuello de botella.
+            El problema no son las personas en estos roles — el problema es la <strong>falta de documentación,
+            capacitación cruzada y sistemas</strong> que permitan que el conocimiento no dependa de individuos específicos.
+            La mitigación es sistémica, no personal.
           </p>
         </div>
       </div>
@@ -1455,232 +1353,143 @@ flowchart TB
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════════ -->
-  <!-- HALLAZGO 5: RECOMENDACIONES PRIORIZADAS -->
+  <!-- HALLAZGO 5: OPORTUNIDADES DE IA GENERATIVA -->
   <!-- ═══════════════════════════════════════════════════════════════════════ -->
   <section class="max-w-6xl mx-auto py-10 px-6 page-break">
-    <h2 class="text-2xl border-b-2 border-gray-900 pb-2">5. Recomendaciones Estratégicas: Matriz Impacto-Esfuerzo</h2>
-    <p class="text-gray-600 mt-2">Priorización basada en valor de negocio y complejidad de implementación</p>
+    <h2 class="text-2xl border-b-2 border-gray-900 pb-2">5. Oportunidades de IA Generativa</h2>
+    <p class="text-gray-600 mt-2">Quick wins alineados con la reducción de carga operativa en Samuel y gerencias</p>
 
-    <!-- Matriz Visual -->
-    <div class="mt-8 relative ml-16" style="height: 500px;">
-      <div class="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-2">
-        <!-- Cuadrante: Alto Impacto / Bajo Esfuerzo (Quick Wins) -->
-        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-          <div class="text-xs uppercase text-green-700 font-bold mb-3">🎯 Quick Wins</div>
-          <div class="space-y-2">
-            <div class="matrix-cell bg-white p-3 rounded shadow-sm border-l-4 border-green-500">
-              <div class="font-semibold text-sm">1. Automatización de Conciliaciones</div>
-              <div class="text-xs text-gray-500 mt-1">Middleware Opera-SAP-Satcom</div>
-              <div class="flex gap-2 mt-2">
-                <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs">ROI: 3 meses</span>
-                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">$45K USD</span>
-              </div>
-            </div>
-            <div class="matrix-cell bg-white p-3 rounded shadow-sm border-l-4 border-green-500">
-              <div class="font-semibold text-sm">2. Dashboard BI Ejecutivo</div>
-              <div class="text-xs text-gray-500 mt-1">Power BI + conexión a sistemas</div>
-              <div class="flex gap-2 mt-2">
-                <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs">ROI: 2 meses</span>
-                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">$15K USD</span>
-              </div>
-            </div>
-            <div class="matrix-cell bg-white p-3 rounded shadow-sm border-l-4 border-green-500">
-              <div class="font-semibold text-sm">3. Workflow Aprobación Compras</div>
-              <div class="text-xs text-gray-500 mt-1">Power Automate + SAP</div>
-              <div class="flex gap-2 mt-2">
-                <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs">ROI: 1 mes</span>
-                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">$8K USD</span>
-              </div>
-            </div>
-          </div>
+    <!-- Oportunidades Principales -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+      <!-- Chatbot para Atención y Reservas -->
+      <div class="p-5 border-2 border-purple-400 rounded-lg bg-purple-50">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</span>
+          <div class="font-bold text-purple-800">Chatbot para Atención y Reservas</div>
         </div>
-
-        <!-- Cuadrante: Alto Impacto / Alto Esfuerzo (Proyectos Estratégicos) -->
-        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <div class="text-xs uppercase text-blue-700 font-bold mb-3">🚀 Proyectos Estratégicos</div>
-          <div class="space-y-2">
-            <div class="matrix-cell bg-white p-3 rounded shadow-sm border-l-4 border-blue-500">
-              <div class="font-semibold text-sm">4. Implementación CRM Grupo</div>
-              <div class="text-xs text-gray-500 mt-1">Salesforce/HubSpot multi-empresa</div>
-              <div class="flex gap-2 mt-2">
-                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">ROI: 8 meses</span>
-                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">$85K USD</span>
-              </div>
-            </div>
-            <div class="matrix-cell bg-white p-3 rounded shadow-sm border-l-4 border-blue-500">
-              <div class="font-semibold text-sm">5. Integración POS-ERP</div>
-              <div class="text-xs text-gray-500 mt-1">API Simphony-CMNET-SAP</div>
-              <div class="flex gap-2 mt-2">
-                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">ROI: 10 meses</span>
-                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">$120K USD</span>
-              </div>
-            </div>
-            <div class="matrix-cell bg-white p-3 rounded shadow-sm border-l-4 border-blue-500">
-              <div class="font-semibold text-sm">6. Sistema CMMS Mantenimiento</div>
-              <div class="text-xs text-gray-500 mt-1">MaintainX para grupo completo</div>
-              <div class="flex gap-2 mt-2">
-                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">ROI: 6 meses</span>
-                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">$35K USD</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Cuadrante: Bajo Impacto / Bajo Esfuerzo (Mejoras Incrementales) -->
-        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-          <div class="text-xs uppercase text-yellow-700 font-bold mb-3">📋 Mejoras Incrementales</div>
-          <div class="space-y-2">
-            <div class="matrix-cell bg-white p-3 rounded shadow-sm border-l-4 border-yellow-500">
-              <div class="font-semibold text-sm">7. Documentación de Procesos</div>
-              <div class="text-xs text-gray-500 mt-1">Wiki interna + videos tutoriales</div>
-              <div class="flex gap-2 mt-2">
-                <span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded text-xs">Continuo</span>
-                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">$5K USD</span>
-              </div>
-            </div>
-            <div class="matrix-cell bg-white p-3 rounded shadow-sm border-l-4 border-yellow-500">
-              <div class="font-semibold text-sm">8. Templates Excel Estandarizados</div>
-              <div class="text-xs text-gray-500 mt-1">Mientras migran a sistemas</div>
-              <div class="flex gap-2 mt-2">
-                <span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded text-xs">1 mes</span>
-                <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">$2K USD</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Cuadrante: Bajo Impacto / Alto Esfuerzo (Evitar) -->
-        <div class="bg-gray-100 border border-gray-300 rounded-lg p-4">
-          <div class="text-xs uppercase text-gray-500 font-bold mb-3">⏸️ Postergar</div>
-          <div class="space-y-2">
-            <div class="matrix-cell bg-white p-3 rounded shadow-sm border-l-4 border-gray-400 opacity-60">
-              <div class="font-semibold text-sm">Reemplazo total ERP</div>
-              <div class="text-xs text-gray-500 mt-1">Alto riesgo, beneficio marginal</div>
-            </div>
-            <div class="matrix-cell bg-white p-3 rounded shadow-sm border-l-4 border-gray-400 opacity-60">
-              <div class="font-semibold text-sm">App móvil custom</div>
-              <div class="text-xs text-gray-500 mt-1">No resuelve problema raíz</div>
-            </div>
-          </div>
+        <p class="text-sm text-gray-700">
+          Automatizar consultas frecuentes y reservas básicas en Los Tajibos y restaurantes. Reducir carga del call center.
+        </p>
+        <div class="mt-3 flex gap-2">
+          <span class="bg-purple-200 px-2 py-1 rounded text-xs text-purple-800">LTH + BF</span>
+          <span class="bg-green-200 px-2 py-1 rounded text-xs text-green-800">En desarrollo</span>
         </div>
       </div>
 
-      <!-- Ejes -->
-      <div class="absolute -left-14 top-1/2 -translate-y-1/2 -rotate-90 text-xs text-gray-500 font-medium whitespace-nowrap">
-        ↑ ALTO ESFUERZO | BAJO ESFUERZO ↓
+      <!-- Control de Stock Automatizado -->
+      <div class="p-5 border-2 border-blue-400 rounded-lg bg-blue-50">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</span>
+          <div class="font-bold text-blue-800">Control de Stock Automatizado</div>
+        </div>
+        <p class="text-sm text-gray-700">
+          Eliminar reconciliación manual en Excel. Visibilidad en tiempo real de <strong>costo real al instante + nivel de inventario</strong> (solicitado por todos los gerentes de restaurantes).
+        </p>
+        <div class="mt-3 flex gap-2">
+          <span class="bg-blue-200 px-2 py-1 rounded text-xs text-blue-800">BF (24 restaurantes)</span>
+          <span class="bg-amber-200 px-2 py-1 rounded text-xs text-amber-800">Alta prioridad</span>
+        </div>
       </div>
-      <div class="absolute bottom-[-30px] left-1/2 -translate-x-1/2 text-xs text-gray-500 font-medium whitespace-nowrap">
-        ← BAJO IMPACTO | ALTO IMPACTO →
+
+      <!-- Automatización de Reportes -->
+      <div class="p-5 border-2 border-green-400 rounded-lg bg-green-50">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">3</span>
+          <div class="font-bold text-green-800">Automatización de Reportes al Directorio</div>
+        </div>
+        <p class="text-sm text-gray-700">
+          Eliminar las 60-80 hrs/mes de PowerPoint manual. Dashboard ejecutivo con datos en tiempo real que genere reportes automáticamente.
+        </p>
+        <div class="mt-3 flex gap-2">
+          <span class="bg-green-200 px-2 py-1 rounded text-xs text-green-800">Comversa</span>
+          <span class="bg-green-200 px-2 py-1 rounded text-xs text-green-800">En progreso (60%)</span>
+        </div>
+      </div>
+
+      <!-- Agente Financiero -->
+      <div class="p-5 border-2 border-amber-400 rounded-lg bg-amber-50">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">4</span>
+          <div class="font-bold text-amber-800">Agente Financiero IA</div>
+        </div>
+        <p class="text-sm text-gray-700">
+          Automatización de conciliaciones bancarias. Reducir el 80% del tiempo que Finanzas dedica a "limpiar y preparar datos".
+        </p>
+        <div class="mt-3 flex gap-2">
+          <span class="bg-amber-200 px-2 py-1 rounded text-xs text-amber-800">Todo el grupo</span>
+          <span class="bg-blue-200 px-2 py-1 rounded text-xs text-blue-800">Q1 2026</span>
+        </div>
+      </div>
+
+      <!-- CRM Restaurantes -->
+      <div class="p-5 border-2 border-red-400 rounded-lg bg-red-50">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">5</span>
+          <div class="font-bold text-red-800">CRM Restaurantes</div>
+        </div>
+        <p class="text-sm text-gray-700">
+          Sistema de gestión de reservas para restaurantes de Bolivian Foods. <strong>Incluido en proyecto, cotizado.</strong>
+        </p>
+        <div class="mt-3 flex gap-2">
+          <span class="bg-red-200 px-2 py-1 rounded text-xs text-red-800">BF</span>
+          <span class="bg-blue-200 px-2 py-1 rounded text-xs text-blue-800">Q1 2026</span>
+        </div>
+      </div>
+
+      <!-- Service Desk Unificado -->
+      <div class="p-5 border-2 border-indigo-400 rounded-lg bg-indigo-50">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">6</span>
+          <div class="font-bold text-indigo-800">Service Desk Unificado con IA</div>
+        </div>
+        <p class="text-sm text-gray-700">
+          Consolidar los 3 puntos de soporte en uno solo con asistente IA. Reducir tiempos de resolución y generar sinergia.
+        </p>
+        <div class="mt-3 flex gap-2">
+          <span class="bg-indigo-200 px-2 py-1 rounded text-xs text-indigo-800">Todo el grupo</span>
+          <span class="bg-green-200 px-2 py-1 rounded text-xs text-green-800">En desarrollo</span>
+        </div>
       </div>
     </div>
 
-    <!-- Resumen de Inversión -->
-    <div class="grid grid-cols-3 gap-6 mt-16">
-      <div class="p-5 bg-green-50 rounded-lg border border-green-200">
-        <div class="text-xs text-green-600 uppercase font-semibold">Inversión Quick Wins</div>
-        <div class="text-2xl font-bold text-green-700 mt-2">$68K USD</div>
-        <div class="text-sm text-gray-600 mt-1">Primeros 90 días</div>
+    <!-- Sugerencias Corporativas (fuera del proyecto) -->
+    <div class="mt-8 p-5 bg-gray-100 rounded-lg border border-gray-300">
+      <div class="font-semibold text-gray-700 mb-3">📋 Sugerencias Corporativas (Fuera del Alcance Actual)</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+        <div class="flex items-start gap-2">
+          <span class="text-gray-400">•</span>
+          <span><strong>CRM Hotel (Los Tajibos)</strong> — Proyecto separado, no incluido en esta fase</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-gray-400">•</span>
+          <span><strong>Sistema CMMS completo</strong> — Mantenimiento preventivo con IA (fase posterior)</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-gray-400">•</span>
+          <span><strong>Integración contable automatizada</strong> — Opera-SAP-Satcom full sync</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-gray-400">•</span>
+          <span><strong>Capacitación continua en tecnología</strong> — Programa de upskilling digital</span>
+        </div>
       </div>
-      <div class="p-5 bg-blue-50 rounded-lg border border-blue-200">
-        <div class="text-xs text-blue-600 uppercase font-semibold">Inversión Proyectos Estratégicos</div>
-        <div class="text-2xl font-bold text-blue-700 mt-2">$240K USD</div>
-        <div class="text-sm text-gray-600 mt-1">Meses 4-12</div>
-      </div>
-      <div class="p-5 bg-gray-100 rounded-lg border border-gray-300">
-        <div class="text-xs text-gray-600 uppercase font-semibold">Inversión Total Año 1</div>
-        <div class="text-2xl font-bold text-gray-800 mt-2">$315K USD</div>
-        <div class="text-sm text-gray-600 mt-1">ROI estimado: 180%</div>
+    </div>
+
+    <!-- Insight -->
+    <div class="contrarian p-5 mt-6">
+      <div class="flex items-start gap-3">
+        <span class="text-2xl">🤖</span>
+        <div>
+          <div class="font-semibold text-amber-800">El Objetivo de la IA Generativa</div>
+          <p class="text-gray-700 mt-1">
+            <strong>Liberar a Samuel de coordinación operativa diaria</strong> para que pueda enfocarse en dirección estratégica.
+            Cada automatización reduce decisiones que escalan innecesariamente y horas de trabajo manual.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════════════ -->
-  <!-- HALLAZGO 6: TIMELINE DE IMPLEMENTACIÓN -->
-  <!-- ═══════════════════════════════════════════════════════════════════════ -->
-  <section class="max-w-6xl mx-auto py-10 px-6 page-break">
-    <h2 class="text-2xl border-b-2 border-gray-900 pb-2">6. Timeline de Implementación: 2026</h2>
-    <p class="text-gray-600 mt-2">Roadmap de transformación operativa - Estado Diciembre 2025</p>
-
-    <div class="mt-8">
-      <pre class="mermaid">
-gantt
-    title Roadmap de Transformación Digital - Grupo Doria Medina 2026
-    dateFormat  YYYY-MM
-    section En Progreso (Dic 2025)
-    Call Center Automatizado        :active, a1, 2025-10, 6M
-    Plataforma Contratos (Running)  :done, a2, 2025-09, 3M
-    Chatbot Fase 1                  :active, a3, 2025-11, 2M
-    Service Desk                    :active, a4, 2025-11, 8M
-    Dashboard Ejecutivo             :active, a5, 2025-10, 3M
-
-    section Q1 2026 (Ene-Mar)
-    CRM Restaurantes (BF)           :b1, 2026-01, 3M
-    Bot Horarios Empleados          :b2, 2026-01, 4M
-    Agente Financiero               :b3, 2026-02, 6M
-    RRHH Gestión Información        :b4, 2026-03, 3M
-
-    section Q2 2026 (Abr-Jun)
-    Dashboards Ventas Cruzados      :c1, 2026-04, 4M
-    Personal Agent SDM              :c2, 2026-04, 2M
-    Mail Agent SDM                  :c3, 2026-05, 2M
-
-    section Q3-Q4 2026
-    Suite Marketing Agents          :d1, 2026-07, 6M
-    CRM Hotel (LTH)                 :d2, 2026-07, 4M
-    Director AI Rollout             :d3, 2026-09, 3M
-      </pre>
-    </div>
-
-    <!-- Estado Actual de Proyectos -->
-    <div class="grid grid-cols-4 gap-4 mt-8">
-      <div class="p-4 bg-green-100 rounded-lg text-center border-t-4 border-green-500">
-        <div class="text-lg font-bold">En Producción</div>
-        <div class="text-sm text-gray-600 mt-1">Plataforma Contratos Agent</div>
-        <div class="text-xs text-green-700 mt-2 font-medium">✅ Running desde Sep 2025</div>
-      </div>
-      <div class="p-4 bg-blue-100 rounded-lg text-center border-t-4 border-blue-500">
-        <div class="text-lg font-bold">En Desarrollo</div>
-        <div class="text-sm text-gray-600 mt-1">Call Center + Chatbot + Service Desk</div>
-        <div class="text-xs text-blue-700 mt-2 font-medium">🔄 3 proyectos activos</div>
-      </div>
-      <div class="p-4 bg-purple-100 rounded-lg text-center border-t-4 border-purple-500">
-        <div class="text-lg font-bold">Q1-Q2 2026</div>
-        <div class="text-sm text-gray-600 mt-1">CRM + Agentes IA Core</div>
-        <div class="text-xs text-purple-700 mt-2 font-medium">7 proyectos planificados</div>
-      </div>
-      <div class="p-4 bg-amber-100 rounded-lg text-center border-t-4 border-amber-500">
-        <div class="text-lg font-bold">Q3-Q4 2026</div>
-        <div class="text-sm text-gray-600 mt-1">Marketing Suite + Director AI</div>
-        <div class="text-xs text-amber-700 mt-2 font-medium">Escalamiento completo</div>
-      </div>
-    </div>
-
-    <!-- Inversión y Dependencias -->
-    <div class="mt-8 p-5 bg-gray-50 rounded-lg">
-      <div class="font-semibold">💰 Estructura de Inversión 2026</div>
-      <ul class="mt-3 space-y-2 text-sm text-gray-700">
-        <li class="flex items-start gap-2">
-          <span class="text-green-500">●</span>
-          <span><strong>Paquete Base (Pagado):</strong> $37,192 USD - Diagnóstico + 8 Macroprocesos + Dashboard</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-blue-500">●</span>
-          <span><strong>Adicionales Fase 1:</strong> $23,445 USD - 20 macroprocesos + 35 microprocesos adicionales</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-purple-500">●</span>
-          <span><strong>Automatizaciones (11 agentes):</strong> $16,000 USD - Call Center, Service Desk, Finanzas, Marketing</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <span class="text-amber-500">●</span>
-          <span><strong>Director AI + CRM:</strong> $27,500 USD - RAG empresarial + CRM Restaurantes</span>
-        </li>
-      </ul>
-      <div class="mt-4 pt-4 border-t border-gray-200 text-right">
-        <span class="text-lg font-bold text-gray-800">Inversión Total 2026: $93,998 USD</span>
-      </div>
-    </div>
-  </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════════ -->
   <!-- CONCLUSIÓN Y PRÓXIMOS PASOS -->
@@ -2049,7 +1858,7 @@ gantt
         <li>Integración API Simphony→SAP para ventas automáticas por local</li>
         <li>Sistema de alertas stock mínimo integrado con compras</li>
         <li>Dashboard por restaurante con KPIs en tiempo real</li>
-        <li>Capacitación modular en video para onboarding rápido</li>
+        <li>Capacitación modular en video para inducción rápida</li>
       </ol>
     </div>
   </section>
@@ -2218,8 +2027,8 @@ flowchart LR
       </div>
       <div class="p-5 border rounded-lg">
         <div class="text-xs text-gray-500 uppercase">Tiempo de Diagnóstico</div>
-        <div class="font-bold text-2xl mt-2">5 días</div>
-        <div class="text-sm text-gray-600">vs. 3-6 meses tradicional</div>
+        <div class="font-bold text-2xl mt-2"> 120 días</div>
+        <div class="text-sm text-gray-600">vs. 6 meses en consultoría tradicional</div>
         <ul class="mt-3 text-xs text-gray-500 space-y-1">
           <li>• Día 1-2: Ingesta y procesamiento</li>
           <li>• Día 3: Consolidación y análisis</li>
@@ -2235,7 +2044,7 @@ flowchart LR
           <div class="text-sm font-medium text-green-700">✅ Lo que capturamos</div>
           <ul class="text-sm text-gray-600 mt-2 space-y-1">
             <li>• Procesos REALES (no documentados)</li>
-            <li>• Workarounds y "trucos" del día a día</li>
+            <li>• Soluciones alternativas y "trucos" del día a día</li>
             <li>• Frustraciones no expresadas formalmente</li>
             <li>• Dependencias entre personas</li>
             <li>• Conocimiento tácito sin documentar</li>
@@ -2255,10 +2064,467 @@ flowchart LR
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- ANEXO E: TABLA DE ENTREVISTADOS -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="max-w-6xl mx-auto py-10 px-6 page-break">
+    <h2 class="text-2xl border-b-2 border-gray-900 pb-2">Anexo E: Entrevistados por Empresa</h2>
+    <p class="text-gray-600 mt-2">Distribución de roles entrevistados (anonimizado)</p>
+
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Los Tajibos -->
+      <div class="p-5 border rounded-lg">
+        <div class="font-bold text-lg text-blue-800 mb-3">🏨 Los Tajibos</div>
+        <div class="text-sm text-gray-500 mb-3">35 entrevistas</div>
+        <table class="w-full text-sm">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="p-2 text-left">Área</th>
+              <th class="p-2 text-center">Roles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b"><td class="p-2">Gerencia General</td><td class="p-2 text-center">2</td></tr>
+            <tr class="border-b"><td class="p-2">Finanzas/Contabilidad</td><td class="p-2 text-center">5</td></tr>
+            <tr class="border-b"><td class="p-2">Operaciones Hoteleras</td><td class="p-2 text-center">8</td></tr>
+            <tr class="border-b"><td class="p-2">Eventos y Banquetes</td><td class="p-2 text-center">4</td></tr>
+            <tr class="border-b"><td class="p-2">A&B (Alimentos y Bebidas)</td><td class="p-2 text-center">6</td></tr>
+            <tr class="border-b"><td class="p-2">Mantenimiento</td><td class="p-2 text-center">3</td></tr>
+            <tr class="border-b"><td class="p-2">RRHH</td><td class="p-2 text-center">3</td></tr>
+            <tr><td class="p-2">TI/Sistemas</td><td class="p-2 text-center">4</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Bolivian Foods -->
+      <div class="p-5 border rounded-lg">
+        <div class="font-bold text-lg text-green-800 mb-3">🍔 Bolivian Foods</div>
+        <div class="text-sm text-gray-500 mb-3">18 entrevistas</div>
+        <table class="w-full text-sm">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="p-2 text-left">Área</th>
+              <th class="p-2 text-center">Roles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b"><td class="p-2">Gerencia General</td><td class="p-2 text-center">2</td></tr>
+            <tr class="border-b"><td class="p-2">Operaciones/Restaurantes</td><td class="p-2 text-center">5</td></tr>
+            <tr class="border-b"><td class="p-2">Finanzas/Contabilidad</td><td class="p-2 text-center">3</td></tr>
+            <tr class="border-b"><td class="p-2">Logística/Compras</td><td class="p-2 text-center">3</td></tr>
+            <tr class="border-b"><td class="p-2">Marketing</td><td class="p-2 text-center">2</td></tr>
+            <tr><td class="p-2">TI/Sistemas</td><td class="p-2 text-center">3</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Comversa -->
+      <div class="p-5 border rounded-lg">
+        <div class="font-bold text-lg text-amber-800 mb-3">🏗️ Comversa</div>
+        <div class="text-sm text-gray-500 mb-3">15 entrevistas</div>
+        <table class="w-full text-sm">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="p-2 text-left">Área</th>
+              <th class="p-2 text-center">Roles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b"><td class="p-2">Dirección/Holding</td><td class="p-2 text-center">3</td></tr>
+            <tr class="border-b"><td class="p-2">Finanzas Corporativas</td><td class="p-2 text-center">4</td></tr>
+            <tr class="border-b"><td class="p-2">Construcción/Proyectos</td><td class="p-2 text-center">3</td></tr>
+            <tr class="border-b"><td class="p-2">Legal</td><td class="p-2 text-center">2</td></tr>
+            <tr><td class="p-2">Auditoría Interna</td><td class="p-2 text-center">3</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="mt-6 p-4 bg-gray-50 rounded-lg text-sm text-gray-600">
+      <strong>Nota:</strong> Las entrevistas fueron realizadas vía WhatsApp y Zoom entre octubre-diciembre 2025.
+      Duración promedio: 25-45 minutos. Todas las conversaciones fueron transcritas y procesadas automáticamente.
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- ANEXO F: TABLA DE SISTEMAS -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="max-w-6xl mx-auto py-10 px-6 page-break">
+    <h2 class="text-2xl border-b-2 border-gray-900 pb-2">Anexo F: Inventario de Sistemas</h2>
+    <p class="text-gray-600 mt-2">Sistemas identificados en el diagnóstico por empresa</p>
+
+    <div class="mt-6 overflow-x-auto">
+      <table class="min-w-full text-sm">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="p-3 text-left">Sistema</th>
+            <th class="p-3 text-left">Tipo</th>
+            <th class="p-3 text-center">LTH</th>
+            <th class="p-3 text-center">BF</th>
+            <th class="p-3 text-center">CVS</th>
+            <th class="p-3 text-left">Observaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b bg-blue-50">
+            <td class="p-3 font-medium" colspan="6">ERP / Gestión Financiera</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">SAP Business One</td>
+            <td class="p-3">ERP</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-gray-600">Núcleo financiero - integración deficiente con POS</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">Satcom (Facturación)</td>
+            <td class="p-3">Facturación</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-gray-600">Requerido por SIN Bolivia</td>
+          </tr>
+          <tr class="border-b bg-green-50">
+            <td class="p-3 font-medium" colspan="6">Operaciones / POS</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">Oracle Opera</td>
+            <td class="p-3">PMS Hotelero</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">—</td>
+            <td class="p-3 text-center">—</td>
+            <td class="p-3 text-gray-600">Property Management System para hotel</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">Oracle Simphony</td>
+            <td class="p-3">POS Restaurantes</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">—</td>
+            <td class="p-3 text-gray-600">Sin integración directa a SAP - problema crítico</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">CMNET</td>
+            <td class="p-3">Gestión Interna</td>
+            <td class="p-3 text-center">—</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">—</td>
+            <td class="p-3 text-gray-600">Sistema intermedio BF antes de SAP</td>
+          </tr>
+          <tr class="border-b bg-purple-50">
+            <td class="p-3 font-medium" colspan="6">Recursos Humanos</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">Reloj Biométrico</td>
+            <td class="p-3">Control Asistencia</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-gray-600">Múltiples marcas, sin centralización</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">Meta4</td>
+            <td class="p-3">Nómina</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">—</td>
+            <td class="p-3 text-gray-600">Sistema de planillas compartido LTH/BF</td>
+          </tr>
+          <tr class="border-b bg-amber-50">
+            <td class="p-3 font-medium" colspan="6">Productividad / Comunicación</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">Microsoft 365</td>
+            <td class="p-3">Suite Productividad</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-gray-600">Excel como sistema paralelo generalizado</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">WhatsApp Business</td>
+            <td class="p-3">Comunicación</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-center">✅</td>
+            <td class="p-3 text-gray-600">Canal principal de coordinación (sin trazabilidad)</td>
+          </tr>
+          <tr class="border-b bg-red-50">
+            <td class="p-3 font-medium" colspan="6">Sistemas Críticos Faltantes</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3 text-red-700">CRM</td>
+            <td class="p-3">Gestión Clientes</td>
+            <td class="p-3 text-center">❌</td>
+            <td class="p-3 text-center">❌</td>
+            <td class="p-3 text-center">❌</td>
+            <td class="p-3 text-gray-600">Ninguna empresa tiene CRM implementado</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3 text-red-700">CMMS</td>
+            <td class="p-3">Mantenimiento</td>
+            <td class="p-3 text-center">❌</td>
+            <td class="p-3 text-center">❌</td>
+            <td class="p-3 text-center">—</td>
+            <td class="p-3 text-gray-600">Órdenes de trabajo en Excel</td>
+          </tr>
+          <tr>
+            <td class="p-3 text-red-700">BI/Analytics</td>
+            <td class="p-3">Inteligencia</td>
+            <td class="p-3 text-center">❌</td>
+            <td class="p-3 text-center">❌</td>
+            <td class="p-3 text-center">❌</td>
+            <td class="p-3 text-gray-600">Reportes manuales en Excel consolidados</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg text-sm">
+      <strong>Hallazgo clave:</strong> Se identificaron 144 sistemas/herramientas en total. El 85% son Excel personalizado
+      o WhatsApp como "sistema paralelo" — indicador de brechas en sistemas formales.
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- ANEXO G: TABLA DE DOLORES (PAIN POINTS) -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="max-w-6xl mx-auto py-10 px-6 page-break">
+    <h2 class="text-2xl border-b-2 border-gray-900 pb-2">Anexo G: Consolidado de Dolores por Área</h2>
+    <p class="text-gray-600 mt-2">Pain points identificados y clasificados por severidad</p>
+
+    <div class="mt-6 overflow-x-auto">
+      <table class="min-w-full text-sm">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="p-3 text-left">Área</th>
+            <th class="p-3 text-left">Dolor Identificado</th>
+            <th class="p-3 text-center">Empresas</th>
+            <th class="p-3 text-center">Severidad</th>
+            <th class="p-3 text-center">Menciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b">
+            <td class="p-3 font-medium">Finanzas</td>
+            <td class="p-3">Conciliación manual entre sistemas (POS-ERP-Facturación)</td>
+            <td class="p-3 text-center">LTH, BF, CVS</td>
+            <td class="p-3 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">Crítico</span></td>
+            <td class="p-3 text-center">23</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3 font-medium">Finanzas</td>
+            <td class="p-3">Cierre contable manual y tardío (5+ días)</td>
+            <td class="p-3 text-center">LTH, BF, CVS</td>
+            <td class="p-3 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">Crítico</span></td>
+            <td class="p-3 text-center">18</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3 font-medium">Operaciones</td>
+            <td class="p-3">Control de stock en Excel sin alertas automáticas</td>
+            <td class="p-3 text-center">LTH, BF</td>
+            <td class="p-3 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">Crítico</span></td>
+            <td class="p-3 text-center">15</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3 font-medium">Comercial</td>
+            <td class="p-3">Sin CRM - pérdida de seguimiento a prospectos</td>
+            <td class="p-3 text-center">LTH, BF, CVS</td>
+            <td class="p-3 text-center"><span class="bg-red-100 text-red-700 px-2 py-1 rounded text-xs">Crítico</span></td>
+            <td class="p-3 text-center">14</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3 font-medium">TI</td>
+            <td class="p-3">Integraciones punto a punto frágiles</td>
+            <td class="p-3 text-center">LTH, BF</td>
+            <td class="p-3 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Alto</span></td>
+            <td class="p-3 text-center">12</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3 font-medium">RRHH</td>
+            <td class="p-3">Alta rotación sin sistema de inducción estructurado</td>
+            <td class="p-3 text-center">BF</td>
+            <td class="p-3 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Alto</span></td>
+            <td class="p-3 text-center">11</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3 font-medium">Mantenimiento</td>
+            <td class="p-3">Órdenes de trabajo en papel/Excel sin seguimiento</td>
+            <td class="p-3 text-center">LTH, BF</td>
+            <td class="p-3 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Alto</span></td>
+            <td class="p-3 text-center">9</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3 font-medium">Gerencia</td>
+            <td class="p-3">Reportes consolidados manuales para toma de decisiones</td>
+            <td class="p-3 text-center">CVS</td>
+            <td class="p-3 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs">Alto</span></td>
+            <td class="p-3 text-center">8</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3 font-medium">Legal</td>
+            <td class="p-3">Contratos sin versionado ni workflow de aprobación</td>
+            <td class="p-3 text-center">LTH, CVS</td>
+            <td class="p-3 text-center"><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs">Medio</span></td>
+            <td class="p-3 text-center">7</td>
+          </tr>
+          <tr>
+            <td class="p-3 font-medium">Compras</td>
+            <td class="p-3">Proveedores sin evaluación sistemática</td>
+            <td class="p-3 text-center">LTH, BF</td>
+            <td class="p-3 text-center"><span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-xs">Medio</span></td>
+            <td class="p-3 text-center">6</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid grid-cols-3 gap-4 mt-6">
+      <div class="p-4 bg-red-50 rounded-lg text-center">
+        <div class="text-2xl font-bold text-red-700">52</div>
+        <div class="text-sm text-gray-600">Dolores Críticos</div>
+      </div>
+      <div class="p-4 bg-orange-50 rounded-lg text-center">
+        <div class="text-2xl font-bold text-orange-700">45</div>
+        <div class="text-sm text-gray-600">Dolores Altos</div>
+      </div>
+      <div class="p-4 bg-yellow-50 rounded-lg text-center">
+        <div class="text-2xl font-bold text-yellow-700">40</div>
+        <div class="text-sm text-gray-600">Dolores Medios</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- ANEXO H: KPIS PROPUESTOS -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="max-w-6xl mx-auto py-10 px-6 page-break">
+    <h2 class="text-2xl border-b-2 border-gray-900 pb-2">Anexo H: KPIs Propuestos para Seguimiento</h2>
+    <p class="text-gray-600 mt-2">Métricas recomendadas para medir progreso de transformación</p>
+
+    <div class="mt-6 overflow-x-auto">
+      <table class="min-w-full text-sm">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="p-3 text-left">Categoría</th>
+            <th class="p-3 text-left">KPI</th>
+            <th class="p-3 text-center">Baseline Actual</th>
+            <th class="p-3 text-center">Meta 2026</th>
+            <th class="p-3 text-left">Frecuencia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b bg-blue-50">
+            <td class="p-3 font-medium" colspan="5">Eficiencia Operativa</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">Finanzas</td>
+            <td class="p-3">Días para cierre contable mensual</td>
+            <td class="p-3 text-center text-red-600">5-7 días</td>
+            <td class="p-3 text-center text-green-600">2 días</td>
+            <td class="p-3">Mensual</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">Finanzas</td>
+            <td class="p-3">Horas de conciliación manual/semana</td>
+            <td class="p-3 text-center text-red-600">15+ hrs</td>
+            <td class="p-3 text-center text-green-600">2 hrs</td>
+            <td class="p-3">Semanal</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">Operaciones</td>
+            <td class="p-3">% de stock con alerta automática</td>
+            <td class="p-3 text-center text-red-600">0%</td>
+            <td class="p-3 text-center text-green-600">100%</td>
+            <td class="p-3">Continuo</td>
+          </tr>
+          <tr class="border-b bg-green-50">
+            <td class="p-3 font-medium" colspan="5">Autonomía Gerencial</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">Gerencia</td>
+            <td class="p-3">% decisiones operativas sin escalar a SDM</td>
+            <td class="p-3 text-center text-red-600">~30%</td>
+            <td class="p-3 text-center text-green-600">80%</td>
+            <td class="p-3">Mensual</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">Gerencia</td>
+            <td class="p-3">Tiempo promedio de aprobación de gastos</td>
+            <td class="p-3 text-center text-red-600">3-5 días</td>
+            <td class="p-3 text-center text-green-600">1 día</td>
+            <td class="p-3">Semanal</td>
+          </tr>
+          <tr class="border-b bg-purple-50">
+            <td class="p-3 font-medium" colspan="5">Servicio al Cliente</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">Atención</td>
+            <td class="p-3">Tiempo respuesta consultas (chatbot)</td>
+            <td class="p-3 text-center text-red-600">N/A</td>
+            <td class="p-3 text-center text-green-600">&lt;30 seg</td>
+            <td class="p-3">Continuo</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">Comercial</td>
+            <td class="p-3">% cotizaciones con seguimiento en CRM</td>
+            <td class="p-3 text-center text-red-600">0%</td>
+            <td class="p-3 text-center text-green-600">100%</td>
+            <td class="p-3">Semanal</td>
+          </tr>
+          <tr class="border-b bg-amber-50">
+            <td class="p-3 font-medium" colspan="5">Tecnología</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">TI</td>
+            <td class="p-3">% de sistemas con integración automática</td>
+            <td class="p-3 text-center text-red-600">~15%</td>
+            <td class="p-3 text-center text-green-600">70%</td>
+            <td class="p-3">Trimestral</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">TI</td>
+            <td class="p-3">Tickets resueltos por Service Desk automatizado</td>
+            <td class="p-3 text-center text-red-600">0</td>
+            <td class="p-3 text-center text-green-600">60%</td>
+            <td class="p-3">Mensual</td>
+          </tr>
+          <tr class="border-b bg-red-50">
+            <td class="p-3 font-medium" colspan="5">Impacto Financiero</td>
+          </tr>
+          <tr class="border-b">
+            <td class="p-3">ROI</td>
+            <td class="p-3">Ahorro anual por automatización</td>
+            <td class="p-3 text-center text-gray-600">$0</td>
+            <td class="p-3 text-center text-green-600">$604,600</td>
+            <td class="p-3">Anual</td>
+          </tr>
+          <tr>
+            <td class="p-3">Productividad</td>
+            <td class="p-3">FTEs liberados para trabajo estratégico</td>
+            <td class="p-3 text-center text-gray-600">0</td>
+            <td class="p-3 text-center text-green-600">8-12</td>
+            <td class="p-3">Semestral</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-6 p-5 bg-blue-50 border border-blue-200 rounded-lg">
+      <div class="font-semibold text-blue-800">📊 Seguimiento Propuesto</div>
+      <p class="text-sm text-gray-700 mt-2">
+        Se recomienda implementar un <strong>Dashboard Ejecutivo</strong> (actualmente en desarrollo) que consolide
+        estos KPIs en tiempo real. Samuel Doria Medina podrá monitorear el progreso de la transformación sin
+        necesidad de solicitar reportes manuales a cada gerencia.
+      </p>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="max-w-6xl mx-auto py-6 px-6 text-center text-sm text-gray-400 border-t mt-10">
     <p>Documento generado automáticamente por Comversa Intelligence Platform</p>
-    <p class="mt-1">Versión 1.0 | Diciembre 2025 | Confidencial</p>
+    <p class="mt-1">Versión 2.0 | Diciembre 2025 | Confidencial</p>
   </footer>
 
 </body>
